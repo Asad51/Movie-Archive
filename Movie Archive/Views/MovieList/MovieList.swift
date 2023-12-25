@@ -17,7 +17,6 @@ struct MovieList: View {
                     ForEach(movies) { movie in
                         MovieRow(movie: movie)
                             .frame(maxWidth: 150, maxHeight: .infinity)
-
                     }
                 }
             }

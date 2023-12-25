@@ -5,8 +5,8 @@
 //  Created by Md. Asadul Islam on 25/12/23.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @main
 struct Movie_ArchiveApp: App {

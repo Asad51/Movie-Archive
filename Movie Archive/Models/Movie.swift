@@ -26,5 +26,3 @@ class Movie {
         self.myRating = myRating
     }
 }
-
-

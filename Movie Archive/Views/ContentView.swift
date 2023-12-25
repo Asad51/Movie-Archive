@@ -5,17 +5,20 @@
 //  Created by Md. Asadul Islam on 25/12/23.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
+    @Query(sort: \Movie.title) private var movies: [Movie]
+
+    @State private var addNewMovie: Bool = false
+
     var body: some View {
         NavigationStack {
-            MovieList(movies: Movie.previewMovies)
+            MovieList(movies: movies)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button {
-
-                        } label: {
+                        Button {} label: {
                             Image(systemName: "line.3.horizontal")
                                 .imageScale(.large)
                                 .foregroundStyle(.black)
@@ -29,12 +32,16 @@ struct ContentView: View {
 
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
-
+                            addNewMovie.toggle()
                         } label: {
                             Image(systemName: "plus")
                                 .imageScale(.large)
                         }
                     }
+                }
+                .sheet(isPresented: $addNewMovie) {
+                    AddMovieView()
+                        .presentationDetents([.medium])
                 }
         }
     }

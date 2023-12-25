@@ -5,15 +5,15 @@
 //  Created by Md. Asadul Islam on 25/12/23.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct MovieRow: View {
     var movie: Movie
 
     var body: some View {
         VStack(alignment: .leading) {
-            Image("sample_image")
+            Image("no_image")
                 .resizable()
                 .scaledToFill()
                 .frame(width: 150, height: 250)
