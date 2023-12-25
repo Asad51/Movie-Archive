@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct MovieList: View {
+    var movies: [Movie]
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            ScrollView(.horizontal) {
+                HStack(alignment: .top, spacing: 10) {
+                    ForEach(movies) { movie in
+                        MovieRow(movie: movie)
+                            .frame(maxWidth: 150, maxHeight: .infinity)
+
+                    }
+                }
+            }
+            .scrollIndicators(.hidden)
+            .listRowInsets(EdgeInsets())
+            .listSectionSeparator(.hidden)
+        }
+        .listStyle(.inset)
     }
 }
 
 #Preview {
-    MovieList()
+    let previewContainer = PreviewContainer(Movie.self)
+    return MovieList(movies: Movie.previewMovies)
+        .modelContainer(previewContainer.container)
 }

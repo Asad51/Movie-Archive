@@ -8,7 +8,14 @@
 import Foundation
 
 extension Date {
-    static func yearOnly(from string: String) -> Date {
-        string.toDate(with: "yyyy")
+    init(from string: String, with format: String = "yyyy") {
+        let date = string.toDate(with: format)
+        self.init(timeInterval: 0, since: date)
+    }
+
+    func toString(with format: String = "yyyy") -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
     }
 }
