@@ -15,8 +15,13 @@ struct MovieList: View {
             ScrollView(.horizontal) {
                 HStack(alignment: .top, spacing: 10) {
                     ForEach(movies) { movie in
-                        MovieRow(movie: movie)
-                            .frame(maxWidth: 150, maxHeight: .infinity)
+                        NavigationLink {
+                            MovieDetails(movie: movie)
+                        } label: {
+                            MovieRow(movie: movie)
+                                .frame(maxWidth: 150, maxHeight: .infinity)
+                                .foregroundStyle(.black)
+                        }
                     }
                 }
             }
@@ -30,6 +35,8 @@ struct MovieList: View {
 
 #Preview {
     let previewContainer = PreviewContainer(Movie.self)
-    return MovieList(movies: Movie.previewMovies)
-        .modelContainer(previewContainer.container)
+    return NavigationStack {
+        MovieList(movies: Movie.previewMovies)
+            .modelContainer(previewContainer.container)
+    }
 }

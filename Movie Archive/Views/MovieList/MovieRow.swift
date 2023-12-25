@@ -20,23 +20,7 @@ struct MovieRow: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .overlay(alignment: .bottom) {
                     HStack {
-                        Circle()
-                            .frame(width: 50)
-                            .overlay {
-                                Text(String(format: "%.1f", movie.imdbRating))
-                                    .foregroundStyle(.white)
-                            }
-                            .overlay(
-                                Circle()
-                                    .inset(by: 3)
-                                    .stroke(.gray, lineWidth: 3.0)
-                            )
-                            .overlay {
-                                Circle()
-                                    .inset(by: 3)
-                                    .trim(from: 0.0, to: movie.imdbRating * 0.1).rotation(.degrees(-90))
-                                    .stroke(.blue, lineWidth: 3.0)
-                            }
+                        IMDBRatingCircle(rating: movie.imdbRating, circleWidth: 50)
                             .offset(x: 20)
 
                         Spacer()
