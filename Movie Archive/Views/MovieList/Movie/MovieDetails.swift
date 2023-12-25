@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct MovieDetails: View {
+    @Environment(\.modelContext) private var context
+    @Environment(\.dismiss) private var dismiss
+
+    @State private var presentDeletionAlert: Bool = false
+
     let movie: Movie
 
     var body: some View {
@@ -72,6 +77,30 @@ struct MovieDetails: View {
             }
             .navigationTitle(movie.title)
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack(spacing: 0) {
+                        Button {} label: {
+                            Image(systemName: "square.and.pencil")
+                        }
+
+                        Button(role: .destructive) {
+                            presentDeletionAlert.toggle()
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                        .foregroundStyle(.red)
+                    }
+                }
+            }
+            .alert("Do you want delete this movie from the library?", isPresented: $presentDeletionAlert) {
+                Button("Cancel", role: .cancel) {}
+
+                Button("Delete", role: .destructive) {
+                    context.delete(movie)
+                    dismiss()
+                }
+            }
         }
     }
 }

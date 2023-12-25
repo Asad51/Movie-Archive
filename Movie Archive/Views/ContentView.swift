@@ -49,6 +49,8 @@ struct ContentView: View {
 
 #Preview {
     let previewContainer = PreviewContainer(Movie.self)
+    previewContainer.addPreviewSamples(Movie.previewMovies)
+    
     return ContentView()
         .modelContainer(previewContainer.container)
 }
