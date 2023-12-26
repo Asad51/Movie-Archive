@@ -12,6 +12,7 @@ struct MovieDetails: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var presentDeletionAlert: Bool = false
+    @State private var navigateToEditing: Bool = false
 
     let movie: Movie
 
@@ -80,7 +81,9 @@ struct MovieDetails: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack(spacing: 0) {
-                        Button {} label: {
+                        Button {
+                            navigateToEditing.toggle()
+                        } label: {
                             Image(systemName: "square.and.pencil")
                         }
 
@@ -100,6 +103,9 @@ struct MovieDetails: View {
                     context.delete(movie)
                     dismiss()
                 }
+            }
+            .navigationDestination(isPresented: $navigateToEditing) {
+                EditMovieView(movie: movie)
             }
         }
     }
