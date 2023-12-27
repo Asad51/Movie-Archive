@@ -42,7 +42,7 @@ struct MovieDetails: View {
                 }
                 .padding(.vertical, 10)
 
-                GenreCapsule(genre: movie.genre)
+                GenreView(genres: movie.genres)
 
                 HStack {
                     HStack {

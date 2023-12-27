@@ -14,7 +14,10 @@ enum Genre: String, CaseIterable {
     case comedy = "Comedy"
     case crime = "Crime"
     case drama = "Drama"
+    case family = "Family"
+    case fantasy = "Fantasy"
     case horror = "Horror"
     case romance = "Romance"
+    case sciFi = "Sci-Fi"
     case thriller = "Thriller"
 }

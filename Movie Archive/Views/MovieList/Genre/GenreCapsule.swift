@@ -18,10 +18,6 @@ struct GenreCapsule: View {
                 .background(.gray.opacity(0.1))
                 .clipShape(RoundedRectangle(cornerRadius: 15))
         }
-        .frame(maxWidth: .infinity)
-        .padding(5)
-        .border(.blue.opacity(0.2), width: 1)
-        .background(.cyan.opacity(0.2))
     }
 }
 

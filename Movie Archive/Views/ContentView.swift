@@ -39,9 +39,8 @@ struct ContentView: View {
                         }
                     }
                 }
-                .sheet(isPresented: $addNewMovie) {
+                .navigationDestination(isPresented: $addNewMovie) {
                     AddMovieView()
-                        .presentationDetents([.fraction(0.75)])
                 }
         }
     }

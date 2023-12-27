@@ -11,9 +11,10 @@ struct EditMovieView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var title: String = ""
+    @State private var director: String = ""
     @State private var year: Date = .init(from: "2023")
     @State private var language: String = Language.english.rawValue
-    @State private var genre: String = Genre.action.rawValue
+    @State private var genres: Set<String> = []
     @State private var imdbRating: Double = 0
     @State private var overview: String = ""
 
@@ -22,10 +23,14 @@ struct EditMovieView: View {
     var body: some View {
         VStack(alignment: .leading) {
             GroupBox {
-                LabeledContent {
+                LabeledContent("Title") {
                     TextField("", text: $title)
-                } label: {
-                    Text("Title")
+                        .textFieldStyle(.roundedBorder)
+                }
+
+                LabeledContent("Director") {
+                    TextField("", text: $director)
+                        .textFieldStyle(.roundedBorder)
                 }
 
                 LabeledContent {
@@ -44,17 +49,23 @@ struct EditMovieView: View {
                         .fill(.gray.opacity(0.1))
                 )
 
-                LabeledContent {
-                    Picker("Genre", selection: $genre) {
-                        ForEach(Genre.allCases, id: \.rawValue) { genre in
-                            Text(genre.rawValue)
-                                .tag(genre)
-                        }
-                    }
+                NavigationLink {
+                    GenrePicker(genres: $genres)
                 } label: {
-                    Text("Genre")
+                    HStack {
+                        Text("Select Genres: ")
+
+                        Spacer()
+
+                        if genres.count > 0 {
+                            Text("\(genres.count)")
+                        }
+                        Image(systemName: "chevron.right")
+                            .padding(.trailing)
+                    }
                 }
-                .padding(.horizontal)
+                .foregroundStyle(.primary)
+                .padding(10)
                 .background(
                     RoundedRectangle(cornerRadius: 5)
                         .fill(.gray.opacity(0.1))
@@ -100,19 +111,21 @@ struct EditMovieView: View {
         .toolbar {
             Button("Update") {
                 movie.title = title
+                movie.director = director
                 movie.year = year
                 movie.imdbRating = imdbRating
                 movie.language = language
-                movie.genre = genre
+                movie.genres = genres
                 dismiss()
             }
             .buttonStyle(.borderedProminent)
         }
         .onAppear {
             title = movie.title
+            director = movie.director
             year = movie.year
             language = movie.language
-            genre = movie.genre
+            genres = movie.genres
             imdbRating = movie.imdbRating
         }
     }

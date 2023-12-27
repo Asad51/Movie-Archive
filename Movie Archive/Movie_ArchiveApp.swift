@@ -14,7 +14,7 @@ struct Movie_ArchiveApp: App {
 
     init() {
         let schema = Schema([Movie.self])
-        let config = ModelConfiguration("Books", schema: schema)
+        let config = ModelConfiguration("Movies", schema: schema)
 
         do {
             container = try ModelContainer(for: Movie.self, configurations: config)

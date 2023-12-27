@@ -11,18 +11,36 @@ import SwiftData
 @Model
 class Movie {
     var title: String
+    var director: String
     var year: Date
     var language: String
-    var genre: String
+    var genres: Set<String>
     var imdbRating: Double
     var myRating: Int
+    var posterUrl: String
+    var coverUrl: String
+    var trailerUrl: String
+    var recommedBy: String
+    var status: Status.RawValue = Status.neverWatched.rawValue // Set default value for newly added required property
 
-    init(title: String, year: Date, language: String, genre: String, imdbRating: Double, myRating: Int = 0) {
+    init(title: String, director: String, year: Date, language: String, genres: Set<String>, imdbRating: Double, myRating: Int = 0, posterUrl: String = "", coverUrl: String = "", trailerUrl: String = "", recommendBy: String = "", status: Status = .neverWatched) {
         self.title = title
+        self.director = director
         self.year = year
         self.language = language
-        self.genre = genre
+        self.genres = genres
         self.imdbRating = imdbRating
         self.myRating = myRating
+        self.posterUrl = posterUrl
+        self.coverUrl = coverUrl
+        self.trailerUrl = trailerUrl
+        self.recommedBy = recommendBy
+        self.status = status.rawValue
     }
+}
+
+enum Status: Int, CaseIterable {
+    case neverWatched
+    case watching
+    case watched
 }
