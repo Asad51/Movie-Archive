@@ -41,7 +41,7 @@ struct ContentView: View {
                 }
                 .sheet(isPresented: $addNewMovie) {
                     AddMovieView()
-                        .presentationDetents([.medium])
+                        .presentationDetents([.fraction(0.75)])
                 }
         }
     }
@@ -50,7 +50,7 @@ struct ContentView: View {
 #Preview {
     let previewContainer = PreviewContainer(Movie.self)
     previewContainer.addPreviewSamples(Movie.previewMovies)
-    
+
     return ContentView()
         .modelContainer(previewContainer.container)
 }

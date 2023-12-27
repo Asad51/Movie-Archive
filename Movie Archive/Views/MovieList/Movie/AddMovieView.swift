@@ -45,12 +45,15 @@ struct AddMovieView: View {
                     }
                 }
 
-                TextField("IMDB Rating", value: $imdbRating, format: .number.precision(.fractionLength(1)))
+                VStack(alignment: .leading) {
+                    Text("IMDB Rating:")
+                    RatingSlider(rating: $imdbRating)
+                }
 
                 Button("Create") {
                     let newMovie = Movie(title: title, year: year, language: language, genre: genre, imdbRating: imdbRating)
                     context.insert(newMovie)
-                    
+
                     dismiss()
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)

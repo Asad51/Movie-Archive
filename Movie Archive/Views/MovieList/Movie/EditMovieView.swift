@@ -21,19 +21,13 @@ struct EditMovieView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            LabeledContent {
-                TextField("",  text: $title)
-            } label: {
-                Text("Title")
-            }
-
-            LabeledContent {
-                TextField("",  value: $imdbRating, format: .number.precision(.fractionLength(1)))
-            } label: {
-                Text("IMDB Rating")
-            }
-
             GroupBox {
+                LabeledContent {
+                    TextField("", text: $title)
+                } label: {
+                    Text("Title")
+                }
+
                 LabeledContent {
                     Picker("Language", selection: $language) {
                         ForEach(Language.allCases, id: \.rawValue) { language in
@@ -82,6 +76,12 @@ struct EditMovieView: View {
                     RoundedRectangle(cornerRadius: 5)
                         .fill(.gray.opacity(0.1))
                 )
+
+                VStack(alignment: .leading) {
+                    Text("IMDB Rating :")
+                        .padding(.leading)
+                    RatingSlider(rating: $imdbRating)
+                }
             }
 
             Text("Overview")
