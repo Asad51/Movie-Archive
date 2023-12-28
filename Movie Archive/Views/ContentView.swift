@@ -47,9 +47,9 @@ struct ContentView: View {
 }
 
 #Preview {
-    let previewContainer = PreviewContainer(Movie.self)
-    previewContainer.addPreviewSamples(Movie.previewMovies)
+    let previewController = PreviewController(Movie.self)
+    previewController.addPreviewItems(Movie.previewMovies)
 
     return ContentView()
-        .modelContainer(previewContainer.container)
+        .modelContainer(previewController.container)
 }

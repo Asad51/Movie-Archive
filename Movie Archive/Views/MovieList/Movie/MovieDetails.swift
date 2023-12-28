@@ -112,10 +112,10 @@ struct MovieDetails: View {
 }
 
 #Preview {
-    let previewContainer = PreviewContainer(Movie.self)
+    let previewController = PreviewController(Movie.self)
 
     return NavigationStack {
         MovieDetails(movie: Movie.previewMovies[0])
     }
-    .modelContainer(previewContainer.container)
+    .modelContainer(previewController.container)
 }

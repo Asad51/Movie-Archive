@@ -50,10 +50,10 @@ struct MovieRow: View {
 }
 
 #Preview {
-    let previewContainer = PreviewContainer(Movie.self)
+    let previewController = PreviewController(Movie.self)
 
     return MovieRow(movie: Movie.previewMovies[0])
         .frame(width: 200, height: 400)
         .background(Color.gray.opacity(0.1))
-        .modelContainer(previewContainer.container)
+        .modelContainer(previewController.container)
 }

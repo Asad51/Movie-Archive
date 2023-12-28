@@ -34,9 +34,10 @@ struct MovieList: View {
 }
 
 #Preview {
-    let previewContainer = PreviewContainer(Movie.self)
+    let previewController = PreviewController(Movie.self)
+    
     return NavigationStack {
         MovieList(movies: Movie.previewMovies)
-            .modelContainer(previewContainer.container)
+            .modelContainer(previewController.container)
     }
 }

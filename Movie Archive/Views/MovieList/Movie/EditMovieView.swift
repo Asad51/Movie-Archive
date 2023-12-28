@@ -123,7 +123,7 @@ struct EditMovieView: View {
             .buttonStyle(.borderedProminent)
         }
         .onAppear {
-            if setInitialValue{
+            if setInitialValue {
                 title = movie.title
                 director = movie.director
                 year = movie.year
@@ -137,9 +137,10 @@ struct EditMovieView: View {
 }
 
 #Preview {
-    let previewContainer = PreviewContainer(Movie.self)
+    let previewController = PreviewController(Movie.self)
+
     return NavigationStack {
         EditMovieView(movie: Movie.previewMovies[0])
-            .modelContainer(previewContainer.container)
+            .modelContainer(previewController.container)
     }
 }

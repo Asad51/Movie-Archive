@@ -1,14 +1,13 @@
 //
-//  PreviewContainer.swift
+//  PreviewController.swift
 //  Movie Archive
 //
-//  Created by Md. Asadul Islam on 25/12/23.
+//  Created by Md. Asadul Islam on 28/12/23.
 //
 
-import Foundation
 import SwiftData
 
-struct PreviewContainer {
+struct PreviewController {
     let container: ModelContainer
 
     init(_ models: any PersistentModel.Type...) {
@@ -22,10 +21,10 @@ struct PreviewContainer {
         }
     }
 
-    func addPreviewSamples(_ samples: [any PersistentModel]) {
+    func addPreviewItems(_ items: [any PersistentModel]) {
         Task { @MainActor in
-            samples.forEach { sample in
-                container.mainContext.insert(sample)
+            items.forEach { item in
+                container.mainContext.insert(item)
             }
         }
     }
