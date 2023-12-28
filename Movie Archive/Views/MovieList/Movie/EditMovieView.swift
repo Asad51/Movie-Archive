@@ -18,6 +18,8 @@ struct EditMovieView: View {
     @State private var imdbRating: Double = 0
     @State private var overview: String = ""
 
+    @State private var setInitialValue: Bool = true
+
     let movie: Movie
 
     var body: some View {
@@ -121,12 +123,15 @@ struct EditMovieView: View {
             .buttonStyle(.borderedProminent)
         }
         .onAppear {
-            title = movie.title
-            director = movie.director
-            year = movie.year
-            language = movie.language
-            genres = movie.genres
-            imdbRating = movie.imdbRating
+            if setInitialValue{
+                title = movie.title
+                director = movie.director
+                year = movie.year
+                language = movie.language
+                genres = movie.genres
+                imdbRating = movie.imdbRating
+                setInitialValue = false
+            }
         }
     }
 }
