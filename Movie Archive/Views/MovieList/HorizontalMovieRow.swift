@@ -1,14 +1,14 @@
 //
-//  MovieRow.swift
+//  HorizontalMovieRow.swift
 //  Movie Archive
 //
-//  Created by Md. Asadul Islam on 25/12/23.
+//  Created by Md. Asadul Islam on 3/1/24.
 //
 
 import SwiftData
 import SwiftUI
 
-struct MovieRow: View {
+struct HorizontalMovieRow: View {
     var movie: Movie
 
     var body: some View {
@@ -52,7 +52,7 @@ struct MovieRow: View {
 #Preview {
     let previewController = PreviewController(Movie.self)
 
-    return MovieRow(movie: Movie.previewMovies[0])
+    return HorizontalMovieRow(movie: Movie.previewMovies[0])
         .frame(width: 200, height: 400)
         .background(Color.gray.opacity(0.1))
         .modelContainer(previewController.container)

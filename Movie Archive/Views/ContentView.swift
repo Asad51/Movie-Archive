@@ -9,13 +9,12 @@ import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-    @Query(sort: \Movie.title) private var movies: [Movie]
-
     @State private var addNewMovie: Bool = false
 
     var body: some View {
         NavigationStack {
-            MovieList(movies: movies)
+            MovieCategories()
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button {} label: {
