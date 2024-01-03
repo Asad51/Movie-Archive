@@ -27,18 +27,22 @@ struct MovieDetails: View {
 
             VStack(spacing: 0) {
                 ZStack(alignment: .topLeading) {
-                    Image("no_cover")
-                        .resizable()
-                        .scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .frame(maxHeight: 300)
+                    AsyncImage(url: URL(string: movie.coverUrl)) { image in
+                        image
+                            .coverModifier()
+                    } placeholder: {
+                        Image("no_cover")
+                            .coverModifier()
+                    }
 
-                    Image("no_image")
-                        .resizable()
-                        .frame(width: 130, height: 200)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .offset(x: 50, y: 50)
-                        .shadow(radius: 5)
+
+                    AsyncImage(url: URL(string: movie.posterUrl)) { image in
+                        image
+                            .posterModifier()
+                    } placeholder: {
+                        Image("no_image")
+                            .posterModifier()
+                    }
                 }
                 .padding(.vertical, 10)
 
@@ -108,6 +112,25 @@ struct MovieDetails: View {
                 EditMovieView(movie: movie)
             }
         }
+    }
+}
+
+fileprivate extension Image {
+    func posterModifier() -> some View {
+        self
+            .resizable()
+            .frame(width: 130, height: 200)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .offset(x: 50, y: 50)
+            .shadow(color: .gray, radius: 5)
+    }
+
+    func coverModifier() -> some View {
+        self
+            .resizable()
+            .scaledToFill()
+            .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 300)
+            .brightness(-0.5)
     }
 }
 
