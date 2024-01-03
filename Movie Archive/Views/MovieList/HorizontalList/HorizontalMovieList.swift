@@ -23,7 +23,12 @@ struct HorizontalMovieList: View {
             [SortDescriptor(\Movie.title)]
         }
 
-        _movies = Query(sort: sortDescriptors)
+        var fetchDescriptor = FetchDescriptor<Movie>(
+            sortBy: sortDescriptors
+        )
+        fetchDescriptor.fetchLimit = 10
+
+        _movies = Query(fetchDescriptor)
     }
 
     var body: some View {
