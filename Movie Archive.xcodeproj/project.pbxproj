@@ -14,6 +14,7 @@
 		DC08438D2B44977600A260FE /* HorizontalMovieRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08438C2B44977600A260FE /* HorizontalMovieRow.swift */; };
 		DC111B2E2B4704B800DD5765 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC111B2D2B4704B800DD5765 /* PreviewContainer.swift */; };
 		DC111B322B470EF500DD5765 /* SwiftDataPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC111B312B470EF500DD5765 /* SwiftDataPreview.swift */; };
+		DC111B342B4730CC00DD5765 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC111B332B4730CC00DD5765 /* MovieList.swift */; };
 		DCB50C582B3977A4007986EE /* Movie_ArchiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB50C572B3977A4007986EE /* Movie_ArchiveApp.swift */; };
 		DCB50C5A2B3977A4007986EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB50C592B3977A4007986EE /* ContentView.swift */; };
 		DCB50C5C2B3977A5007986EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCB50C5B2B3977A5007986EE /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		DC08438C2B44977600A260FE /* HorizontalMovieRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMovieRow.swift; sourceTree = "<group>"; };
 		DC111B2D2B4704B800DD5765 /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
 		DC111B312B470EF500DD5765 /* SwiftDataPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataPreview.swift; sourceTree = "<group>"; };
+		DC111B332B4730CC00DD5765 /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
 		DCB50C542B3977A4007986EE /* Movie Archive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Archive.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB50C572B3977A4007986EE /* Movie_ArchiveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_ArchiveApp.swift; sourceTree = "<group>"; };
 		DCB50C592B3977A4007986EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				DCC9FEE02B45B9870082BDB1 /* MovieListView.swift */,
+				DC111B332B4730CC00DD5765 /* MovieList.swift */,
 				DCC9FEE22B45B99D0082BDB1 /* MovieListRow.swift */,
 				DCC9FEE42B45B9A10082BDB1 /* HorizontalList */,
 				DCB50C8E2B39EAAD007986EE /* Movie */,
@@ -304,6 +307,7 @@
 				DC0843892B44872C00A260FE /* FilterOption.swift in Sources */,
 				DCE8DC3F2B3B446500588D1E /* Color+Extensions.swift in Sources */,
 				DCC9FEE12B45B9870082BDB1 /* MovieListView.swift in Sources */,
+				DC111B342B4730CC00DD5765 /* MovieList.swift in Sources */,
 				DCB50C812B39C35F007986EE /* AddMovieView.swift in Sources */,
 				DC111B2E2B4704B800DD5765 /* PreviewContainer.swift in Sources */,
 				DCB50C832B39CA4B007986EE /* Language.swift in Sources */,

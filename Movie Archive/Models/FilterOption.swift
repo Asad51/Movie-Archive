@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum FilterOption {
-    case none
-    case director(String)
-    case year(Date)
-    case genre(String)
-    case rating(Double)
-    case status(Status)
+enum FilterOption: String, CaseIterable {
+    case none = "None"
+    case director = "Director"
+    case year = "Year"
+    case genre = "Genre"
+    case rating = "Rating"
+    case status = "Status"
 }

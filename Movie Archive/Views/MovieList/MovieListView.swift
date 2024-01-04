@@ -5,27 +5,57 @@
 //  Created by Md. Asadul Islam on 3/1/24.
 //
 
+import SwiftData
 import SwiftUI
 
 struct MovieListView: View {
-    var movies: [Movie]
+    @State private var searchText: String = ""
+
+    @FocusState private var searchFieldFocused: Bool
 
     var body: some View {
-        List {
-            ForEach(movies) { movie in
-                NavigationLink {
-                    MovieDetails(movie: movie)
-                } label: {
-                    MovieListRow(movie: movie)
-                        .frame(maxWidth: .infinity)
-                        .foregroundStyle(.black)
-                        .listRowInsets(EdgeInsets())
-                        .listSectionSeparator(.hidden)
+        VStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .imageScale(.large)
+                            .foregroundStyle(.gray)
+
+                        TextField("Enter movie title", text: $searchText)
+                            .focused($searchFieldFocused)
+                            .autocorrectionDisabled()
+                            .textInputAutocapitalization(.never)
+
+                        if !searchText.isEmpty {
+                            Image(systemName: "multiply")
+                                .onTapGesture {
+                                    searchText = ""
+                                }
+                        }
+                    }
+                    .padding(10)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 1)
+                            .foregroundStyle(.gray)
+                    }
+                    .animation(.easeInOut, value: searchText)
+
+                    if searchFieldFocused {
+                        Button("Cancel", role: .cancel) {
+                            searchFieldFocused.toggle()
+                        }
+                    }
                 }
-                .listRowInsets(EdgeInsets())
+                .animation(.easeIn, value: searchFieldFocused)
             }
+            .padding(.horizontal)
+
+            MovieList(searchText: searchText)
+
+            Spacer()
         }
-        .listStyle(.insetGrouped)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Movie List")
@@ -36,9 +66,10 @@ struct MovieListView: View {
 }
 
 #Preview {
-    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self])) {
+    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
         NavigationStack {
-            MovieListView(movies: Movie.previewMovies)
+            MovieListView()
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

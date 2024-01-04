@@ -13,7 +13,6 @@ struct ContentView: View {
 
     // TODO: To be removed later, for test purpose only
     @State private var showMovieList: Bool = false
-    @Query private var movies: [Movie]
 
     var body: some View {
         NavigationStack {
@@ -49,7 +48,8 @@ struct ContentView: View {
                         .navigationBarTitleDisplayMode(.inline)
                 }
                 .navigationDestination(isPresented: $showMovieList) {
-                    MovieListView(movies: movies)
+                    MovieListView()
+                        .navigationBarTitleDisplayMode(.inline)
                 }
         }
     }
