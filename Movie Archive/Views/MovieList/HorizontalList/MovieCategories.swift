@@ -40,9 +40,7 @@ struct MovieCategories: View {
 }
 
 #Preview {
-    let previewController = PreviewController(Movie.self)
-    previewController.addPreviewItems(Movie.previewMovies)
-
-    return MovieCategories()
-        .modelContainer(previewController.container)
+    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
+        MovieCategories()
+    }
 }

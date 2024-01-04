@@ -137,10 +137,7 @@ struct EditMovieView: View {
 }
 
 #Preview {
-    let previewController = PreviewController(Movie.self)
-
-    return NavigationStack {
+    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self])) {
         EditMovieView(movie: Movie.previewMovies[0])
-            .modelContainer(previewController.container)
     }
 }

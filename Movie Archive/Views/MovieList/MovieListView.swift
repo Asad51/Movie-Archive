@@ -24,7 +24,6 @@ struct MovieListView: View {
                 }
                 .listRowInsets(EdgeInsets())
             }
-
         }
         .listStyle(.insetGrouped)
         .toolbar {
@@ -37,11 +36,9 @@ struct MovieListView: View {
 }
 
 #Preview {
-    let previewController = PreviewController(Movie.self)
-    previewController.addPreviewItems(Movie.previewMovies)
-
-    return NavigationStack {
-        MovieListView(movies: Movie.previewMovies)
+    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self])) {
+        NavigationStack {
+            MovieListView(movies: Movie.previewMovies)
+        }
     }
-    .modelContainer(previewController.container)
 }

@@ -14,7 +14,8 @@ struct HorizontalMovieRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             AsyncImage(url: URL(string: movie.posterUrl)) { image in
-                image.posterModifier(imdbRating: movie.imdbRating)
+                image
+                    .posterModifier(imdbRating: movie.imdbRating)
             } placeholder: {
                 Image("no_image")
                     .posterModifier(imdbRating: movie.imdbRating)
@@ -35,7 +36,7 @@ struct HorizontalMovieRow: View {
     }
 }
 
-fileprivate extension Image {
+private extension Image {
     func posterModifier(imdbRating: Double) -> some View {
         self
             .resizable()
@@ -61,10 +62,9 @@ fileprivate extension Image {
 }
 
 #Preview {
-    let previewController = PreviewController(Movie.self)
-
-    return HorizontalMovieRow(movie: Movie.previewMovies[0])
-        .frame(width: 200, height: 400)
-        .background(Color.gray.opacity(0.1))
-        .modelContainer(previewController.container)
+    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self])) {
+        HorizontalMovieRow(movie: Movie.previewMovies[0])
+            .frame(width: 200, height: 400)
+            .background(Color.gray.opacity(0.1))
+    }
 }

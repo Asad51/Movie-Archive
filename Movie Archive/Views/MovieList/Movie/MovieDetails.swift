@@ -35,7 +35,6 @@ struct MovieDetails: View {
                             .coverModifier()
                     }
 
-
                     AsyncImage(url: URL(string: movie.posterUrl)) { image in
                         image
                             .posterModifier()
@@ -115,7 +114,7 @@ struct MovieDetails: View {
     }
 }
 
-fileprivate extension Image {
+private extension Image {
     func posterModifier() -> some View {
         self
             .resizable()
@@ -135,10 +134,9 @@ fileprivate extension Image {
 }
 
 #Preview {
-    let previewController = PreviewController(Movie.self)
-
-    return NavigationStack {
-        MovieDetails(movie: Movie.previewMovies[0])
+    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self])) {
+        NavigationStack {
+            MovieDetails(movie: Movie.previewMovies[0])
+        }
     }
-    .modelContainer(previewController.container)
 }

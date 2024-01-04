@@ -52,14 +52,12 @@ struct HorizontalMovieList: View {
 }
 
 #Preview {
-    let previewController = PreviewController(Movie.self)
-    previewController.addPreviewItems(Movie.previewMovies)
-
-    return NavigationStack {
-        List {
-            HorizontalMovieList(sortBy: .year)
+    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
+        NavigationStack {
+            List {
+                HorizontalMovieList(sortBy: .year)
+            }
+            .listStyle(.inset)
         }
-        .listStyle(.inset)
     }
-    .modelContainer(previewController.container)
 }

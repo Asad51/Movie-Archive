@@ -61,7 +61,7 @@ struct MovieListRow: View {
     }
 }
 
-fileprivate extension Image {
+private extension Image {
     func posterModifier() -> some View {
         self
             .resizable()
@@ -75,13 +75,12 @@ fileprivate extension Image {
 }
 
 #Preview {
-    let previewController = PreviewController(Movie.self)
-
-    return VStack {
-        MovieListRow(movie: Movie.previewMovies[4])
-            .background(Color.gray.opacity(0.1))
-        MovieListRow(movie: Movie.previewMovies[6])
-            .background(Color.gray.opacity(0.1))
+    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self])) {
+        VStack {
+            MovieListRow(movie: Movie.previewMovies[4])
+                .background(Color.gray.opacity(0.1))
+            MovieListRow(movie: Movie.previewMovies[6])
+                .background(Color.gray.opacity(0.1))
+        }
     }
-    .modelContainer(previewController.container)
 }

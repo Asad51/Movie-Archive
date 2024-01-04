@@ -14,7 +14,7 @@ struct ContentView: View {
     // TODO: To be removed later, for test purpose only
     @State private var showMovieList: Bool = false
     @Query private var movies: [Movie]
-    
+
     var body: some View {
         NavigationStack {
             MovieCategories()
@@ -50,16 +50,13 @@ struct ContentView: View {
                 }
                 .navigationDestination(isPresented: $showMovieList) {
                     MovieListView(movies: movies)
-                        //.navigationBarTitleDisplayMode(.inline)
                 }
         }
     }
 }
 
 #Preview {
-    let previewController = PreviewController(Movie.self)
-    previewController.addPreviewItems(Movie.previewMovies)
-
-    return ContentView()
-        .modelContainer(previewController.container)
+    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
+        ContentView()
+    }
 }
