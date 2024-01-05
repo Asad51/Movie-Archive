@@ -44,9 +44,10 @@ struct HorizontalMovieList: View {
                     }
                 }
             }
+            .padding(.horizontal, 10)
         }
         .scrollIndicators(.hidden)
-        .listRowInsets(EdgeInsets())
+        .listRowInsets(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
         .listSectionSeparator(.hidden)
     }
 }
@@ -57,7 +58,7 @@ struct HorizontalMovieList: View {
             List {
                 HorizontalMovieList(sortBy: .year)
             }
-            .listStyle(.inset)
+            .listStyle(.grouped)
         }
     }
 }

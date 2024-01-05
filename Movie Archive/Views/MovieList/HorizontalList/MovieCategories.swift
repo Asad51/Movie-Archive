@@ -35,7 +35,7 @@ struct MovieCategories: View {
                 }
             }
         }
-        .listStyle(.inset)
+        .listStyle(.grouped)
     }
 }
 

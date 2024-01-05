@@ -21,6 +21,8 @@ struct Movie_ArchiveApp: App {
         } catch {
             fatalError("Could not configure the model container.")
         }
+
+        changeNavbarAppearence()
     }
 
     var body: some Scene {
@@ -28,5 +30,20 @@ struct Movie_ArchiveApp: App {
             ContentView()
         }
         .modelContainer(container)
+    }
+
+    private func changeNavbarAppearence() {
+        let appearence = UINavigationBarAppearance()
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 24)
+        ]
+
+        appearence.titleTextAttributes = attributes
+        appearence.largeTitleTextAttributes = attributes
+        appearence.backgroundColor = .secondarySystemBackground
+
+        UINavigationBar.appearance().standardAppearance = appearence
+        UINavigationBar.appearance().compactAppearance = appearence
+        UINavigationBar.appearance().scrollEdgeAppearance = appearence
     }
 }
