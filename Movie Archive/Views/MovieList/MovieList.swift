@@ -11,11 +11,25 @@ import SwiftUI
 struct MovieList: View {
     @Query private var movies: [Movie]
 
-    init(searchText: String) {
-        _movies = Query(filter: #Predicate {
-            searchText.isEmpty ||
-                $0.title.localizedStandardContains(searchText)
-        })
+    init(searchText: String, sortOrder: SortOrder) {
+        let sortDescriptors: [SortDescriptor<Movie>] = switch sortOrder {
+            case .title:
+                [SortDescriptor(\Movie.title)]
+            case .year:
+                [SortDescriptor(\Movie.year, order: .reverse)]
+            case .rating:
+                [SortDescriptor(\Movie.imdbRating, order: .reverse)]
+            default:
+                []
+        }
+
+        _movies = Query(
+            filter: #Predicate {
+                searchText.isEmpty ||
+                    $0.title.localizedStandardContains(searchText)
+            },
+            sort: sortDescriptors
+        )
     }
 
     var body: some View {
@@ -40,7 +54,7 @@ struct MovieList: View {
 #Preview {
     SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
         NavigationStack {
-            MovieList(searchText: "")
+            MovieList(searchText: "", sortOrder: .rating)
                 .navigationBarTitleDisplayMode(.inline)
         }
     }

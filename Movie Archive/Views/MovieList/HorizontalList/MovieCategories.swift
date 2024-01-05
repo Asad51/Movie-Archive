@@ -11,9 +11,12 @@ import SwiftUI
 struct MovieCategories: View {
     @Query(sort: \Movie.title) private var movies: [Movie]
 
+    @Binding var showMovieList: Bool
+    @Binding var sortOrder: SortOrder
+
     let sections: [(headerText: String, sortBy: SortOrder)] = [
         (headerText: "Top Rated", sortBy: .rating),
-        (headerText: "Latest", sortBy: .year)
+        (headerText: "Latest", sortBy: .year),
     ]
 
     var body: some View {
@@ -28,7 +31,10 @@ struct MovieCategories: View {
 
                         Spacer()
 
-                        Button {} label: {
+                        Button {
+                            showMovieList.toggle()
+                            sortOrder = sortBy
+                        } label: {
                             Text("View All")
                         }
                     }
@@ -41,6 +47,6 @@ struct MovieCategories: View {
 
 #Preview {
     SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
-        MovieCategories()
+        MovieCategories(showMovieList: .constant(false), sortOrder: .constant(.title))
     }
 }

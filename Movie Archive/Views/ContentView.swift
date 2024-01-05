@@ -11,18 +11,16 @@ import SwiftUI
 struct ContentView: View {
     @State private var addNewMovie: Bool = false
 
-    // TODO: To be removed later, for test purpose only
     @State private var showMovieList: Bool = false
+    @State private var sortOrder: SortOrder = .none
 
     var body: some View {
         NavigationStack {
-            MovieCategories()
+            MovieCategories(showMovieList: $showMovieList, sortOrder: $sortOrder)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            showMovieList.toggle()
-                        } label: {
+                        Button {} label: {
                             Image(systemName: "line.3.horizontal")
                                 .imageScale(.large)
                                 .foregroundStyle(.black)
@@ -48,7 +46,7 @@ struct ContentView: View {
                         .navigationBarTitleDisplayMode(.inline)
                 }
                 .navigationDestination(isPresented: $showMovieList) {
-                    MovieListView()
+                    MovieListView(sortOrder: sortOrder)
                         .navigationBarTitleDisplayMode(.inline)
                 }
         }

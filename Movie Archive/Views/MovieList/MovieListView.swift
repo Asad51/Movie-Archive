@@ -10,12 +10,15 @@ import SwiftUI
 
 struct MovieListView: View {
     @State private var searchText: String = ""
-
     @FocusState private var searchFieldFocused: Bool
+
+    @State var sortOrder: SortOrder
 
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
+                // MARK: - Search field
+
                 HStack {
                     HStack {
                         Image(systemName: "magnifyingglass")
@@ -49,10 +52,28 @@ struct MovieListView: View {
                     }
                 }
                 .animation(.easeIn, value: searchFieldFocused)
+
+                // MARK: - Sort Option Picker
+
+                HStack {
+                    Text("Sort By:")
+
+                    Picker(selection: $sortOrder) {
+                        ForEach(SortOrder.allCases, id: \.rawValue) { order in
+                            Text(order.rawValue)
+                                .tag(order)
+                        }
+                    } label: {
+                        Text("Select Option")
+                    }
+                }
             }
             .padding(.horizontal)
+            .padding(.top, 10)
 
-            MovieList(searchText: searchText)
+            MovieList(searchText: searchText, sortOrder: sortOrder)
+                .animation(.smooth, value: sortOrder)
+                .animation(.easeIn, value: searchText)
 
             Spacer()
         }
@@ -68,7 +89,7 @@ struct MovieListView: View {
 #Preview {
     SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
         NavigationStack {
-            MovieListView()
+            MovieListView(sortOrder: .rating)
                 .navigationBarTitleDisplayMode(.inline)
         }
     }
