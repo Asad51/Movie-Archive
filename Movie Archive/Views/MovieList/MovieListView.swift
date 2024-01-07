@@ -12,7 +12,7 @@ struct MovieListView: View {
     @State private var searchText: String = ""
     @FocusState private var searchFieldFocused: Bool
 
-    @State var sortOrder: SortOrder
+    @State var sortOption: SortOption
 
     var body: some View {
         VStack {
@@ -58,10 +58,10 @@ struct MovieListView: View {
                 HStack {
                     Text("Sort By:")
 
-                    Picker(selection: $sortOrder) {
-                        ForEach(SortOrder.allCases, id: \.rawValue) { order in
-                            Text(order.rawValue)
-                                .tag(order)
+                    Picker(selection: $sortOption) {
+                        ForEach(SortOption.allCases, id: \.rawValue) { option in
+                            Text(option.rawValue)
+                                .tag(option)
                         }
                     } label: {
                         Text("Select Option")
@@ -71,12 +71,13 @@ struct MovieListView: View {
             .padding(.horizontal)
             .padding(.top, 10)
 
-            MovieList(searchText: searchText, sortOrder: sortOrder)
-                .animation(.smooth, value: sortOrder)
+            MovieList(searchText: searchText, sortOption: sortOption)
+                .animation(.smooth, value: sortOption)
                 .animation(.easeIn, value: searchText)
 
             Spacer()
         }
+        .ignoresSafeArea(edges: .bottom)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Movie List")
@@ -89,7 +90,7 @@ struct MovieListView: View {
 #Preview {
     SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
         NavigationStack {
-            MovieListView(sortOrder: .rating)
+            MovieListView(sortOption: .rating)
                 .navigationBarTitleDisplayMode(.inline)
         }
     }

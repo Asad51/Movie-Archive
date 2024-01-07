@@ -1,13 +1,13 @@
 //
-//  SortOrder.swift
+//  SortOption.swift
 //  Movie Archive
 //
-//  Created by Md. Asadul Islam on 3/1/24.
+//  Created by Md. Asadul Islam on 7/1/24.
 //
 
 import Foundation
 
-enum SortOrder: String, CaseIterable {
+enum SortOption: String, CaseIterable {
     case none = "None"
     case title = "Title"
     case year = "Year"

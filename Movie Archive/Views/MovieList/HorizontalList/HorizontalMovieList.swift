@@ -11,16 +11,16 @@ import SwiftUI
 struct HorizontalMovieList: View {
     @Query(sort: \Movie.title) private var movies: [Movie]
 
-    init(sortBy order: SortOrder = .none) {
-        let sortDescriptors: [SortDescriptor<Movie>] = switch order {
-        case .title:
-            [SortDescriptor(\Movie.title)]
-        case .year:
-            [SortDescriptor(\Movie.year, order: .reverse)]
-        case .rating:
-            [SortDescriptor(\Movie.imdbRating, order: .reverse)]
-        default:
-            [SortDescriptor(\Movie.title)]
+    init(sortBy sortOption: SortOption = .none) {
+        let sortDescriptors: [SortDescriptor<Movie>] = switch sortOption {
+            case .title:
+                [SortDescriptor(\Movie.title)]
+            case .year:
+                [SortDescriptor(\Movie.year, order: .reverse)]
+            case .rating:
+                [SortDescriptor(\Movie.imdbRating, order: .reverse)]
+            default:
+                [SortDescriptor(\Movie.title)]
         }
 
         var fetchDescriptor = FetchDescriptor<Movie>(

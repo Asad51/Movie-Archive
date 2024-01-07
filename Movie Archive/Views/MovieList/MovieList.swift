@@ -11,8 +11,10 @@ import SwiftUI
 struct MovieList: View {
     @Query private var movies: [Movie]
 
-    init(searchText: String, sortOrder: SortOrder) {
-        let sortDescriptors: [SortDescriptor<Movie>] = switch sortOrder {
+    @State private var selectedMovie: Movie?
+
+    init(searchText: String, sortOption: SortOption) {
+        let sortDescriptors: [SortDescriptor<Movie>] = switch sortOption {
             case .title:
                 [SortDescriptor(\Movie.title)]
             case .year:
@@ -35,17 +37,18 @@ struct MovieList: View {
     var body: some View {
         List {
             ForEach(movies) { movie in
-                NavigationLink {
-                    MovieDetails(movie: movie)
-                } label: {
-                    MovieListRow(movie: movie)
-                        .frame(maxWidth: .infinity)
-                        .foregroundStyle(.black)
-                        .listRowInsets(EdgeInsets())
-                        .listSectionSeparator(.hidden)
-                }
-                .listRowInsets(EdgeInsets())
+                MovieListRow(movie: movie)
+                    .frame(maxWidth: .infinity)
+                    .foregroundStyle(.black)
+                    .listSectionSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 0))
+                    .onTapGesture {
+                        selectedMovie = movie
+                    }
             }
+        }
+        .navigationDestination(item: $selectedMovie) { movie in
+            MovieDetails(movie: movie)
         }
         .listStyle(.insetGrouped)
     }
@@ -54,7 +57,7 @@ struct MovieList: View {
 #Preview {
     SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
         NavigationStack {
-            MovieList(searchText: "", sortOrder: .rating)
+            MovieList(searchText: "", sortOption: .rating)
                 .navigationBarTitleDisplayMode(.inline)
         }
     }

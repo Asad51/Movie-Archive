@@ -12,9 +12,9 @@ struct MovieCategories: View {
     @Query(sort: \Movie.title) private var movies: [Movie]
 
     @Binding var showMovieList: Bool
-    @Binding var sortOrder: SortOrder
+    @Binding var sortOption: SortOption
 
-    let sections: [(headerText: String, sortBy: SortOrder)] = [
+    let sections: [(headerText: String, sortBy: SortOption)] = [
         (headerText: "Top Rated", sortBy: .rating),
         (headerText: "Latest", sortBy: .year),
     ]
@@ -33,7 +33,7 @@ struct MovieCategories: View {
 
                         Button {
                             showMovieList.toggle()
-                            sortOrder = sortBy
+                            sortOption = sortBy
                         } label: {
                             Text("View All")
                         }
@@ -47,6 +47,6 @@ struct MovieCategories: View {
 
 #Preview {
     SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
-        MovieCategories(showMovieList: .constant(false), sortOrder: .constant(.title))
+        MovieCategories(showMovieList: .constant(false), sortOption: .constant(.title))
     }
 }
