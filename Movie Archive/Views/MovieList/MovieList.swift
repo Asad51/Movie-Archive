@@ -35,22 +35,26 @@ struct MovieList: View {
     }
 
     var body: some View {
-        List {
-            ForEach(movies) { movie in
-                MovieListRow(movie: movie)
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(.black)
-                    .listSectionSeparator(.hidden)
-                    .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 0))
-                    .onTapGesture {
-                        selectedMovie = movie
-                    }
+        if movies.count == 0 {
+            ContentUnavailableView.search
+        } else {
+            List {
+                ForEach(movies) { movie in
+                    MovieListRow(movie: movie)
+                        .frame(maxWidth: .infinity)
+                        .foregroundStyle(.black)
+                        .listSectionSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 0))
+                        .onTapGesture {
+                            selectedMovie = movie
+                        }
+                }
             }
+            .navigationDestination(item: $selectedMovie) { movie in
+                MovieDetails(movie: movie)
+            }
+            .listStyle(.insetGrouped)
         }
-        .navigationDestination(item: $selectedMovie) { movie in
-            MovieDetails(movie: movie)
-        }
-        .listStyle(.insetGrouped)
     }
 }
 

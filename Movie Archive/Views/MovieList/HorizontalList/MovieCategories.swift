@@ -20,28 +20,32 @@ struct MovieCategories: View {
     ]
 
     var body: some View {
-        List {
-            ForEach(sections, id: \.headerText) { headerText, sortBy in
-                Section {
-                    HorizontalMovieList(sortBy: sortBy)
-                } header: {
-                    HStack {
-                        Text(headerText)
-                            .font(.headline)
+        if movies.count == 0 {
+            ContentUnavailableView("No movies in the Library.", systemImage: "play.square.stack.fill", description: Text("Movies added to the libarry will be displayed here."))
+        } else {
+            List {
+                ForEach(sections, id: \.headerText) { headerText, sortBy in
+                    Section {
+                        HorizontalMovieList(sortBy: sortBy)
+                    } header: {
+                        HStack {
+                            Text(headerText)
+                                .font(.headline)
 
-                        Spacer()
+                            Spacer()
 
-                        Button {
-                            showMovieList.toggle()
-                            sortOption = sortBy
-                        } label: {
-                            Text("View All")
+                            Button {
+                                showMovieList.toggle()
+                                sortOption = sortBy
+                            } label: {
+                                Text("View All")
+                            }
                         }
                     }
                 }
             }
+            .listStyle(.grouped)
         }
-        .listStyle(.grouped)
     }
 }
 
