@@ -27,6 +27,8 @@ struct MovieDetails: View {
 
             VStack(spacing: 0) {
                 ZStack(alignment: .topLeading) {
+                    // MARK: - Cover image
+
                     AsyncImage(url: URL(string: movie.coverUrl)) { image in
                         image
                             .coverModifier()
@@ -35,15 +37,43 @@ struct MovieDetails: View {
                             .coverModifier()
                     }
 
-                    AsyncImage(url: URL(string: movie.posterUrl)) { image in
-                        image
-                            .posterModifier()
-                    } placeholder: {
-                        Image("no_image")
-                            .posterModifier()
+                    VStack(alignment: .leading, spacing: 0) {
+                        HStack(alignment: .top) {
+                            // MARK: - Poster image
+
+                            AsyncImage(url: URL(string: movie.posterUrl)) { image in
+                                image
+                                    .posterModifier()
+                            } placeholder: {
+                                Image("no_image")
+                                    .posterModifier()
+                            }
+
+                            // MARK: Basic info
+
+                            VStack(alignment: .leading) {
+                                Text("\(movie.title)")
+                                    .font(.headline)
+                                    .lineLimit(2)
+
+                                Text("\(movie.director) · \(movie.year.toString())")
+                                    .font(.subheadline)
+                            }
+                            .foregroundStyle(.white)
+                            .padding()
+                            .offset(x: 20, y: 20)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(.black.opacity(0.7))
+                                    .offset(x: 20, y: 20)
+                            )
+                        }
                     }
                 }
+                .frame(maxHeight: 300)
                 .padding(.vertical, 10)
+
+                // MARK: - Genre view
 
                 GenreView(genres: movie.genres)
 
@@ -74,6 +104,8 @@ struct MovieDetails: View {
                         .shadow(radius: 5, y: 5)
                 )
 
+                // MARK: - Overview
+
                 MovieOverview(overview: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.")
                     .foregroundStyle(.black)
 
@@ -82,6 +114,8 @@ struct MovieDetails: View {
             .navigationTitle(movie.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                // MARK: - Toolbar
+
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack(spacing: 0) {
                         Button {
@@ -99,6 +133,9 @@ struct MovieDetails: View {
                     }
                 }
             }
+
+            // MARK: - Deletion alert
+
             .alert("Do you want delete this movie from the library?", isPresented: $presentDeletionAlert) {
                 Button("Cancel", role: .cancel) {}
 
@@ -107,6 +144,9 @@ struct MovieDetails: View {
                     dismiss()
                 }
             }
+
+            // MARK: - Edit view navigation
+
             .navigationDestination(isPresented: $navigateToEditing) {
                 EditMovieView(movie: movie)
             }
@@ -115,15 +155,23 @@ struct MovieDetails: View {
 }
 
 private extension Image {
+    // MARK: - Poster image modifier
+
+    /// Modify poster image
+    /// - Returns: Returns modified image
     func posterModifier() -> some View {
         self
             .resizable()
             .frame(width: 130, height: 200)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .offset(x: 50, y: 50)
+            .offset(x: 20, y: 20)
             .shadow(color: .gray, radius: 5)
     }
 
+    // MARK: - Cover image modifier
+
+    /// Modify poster image
+    /// - Returns: Returns modified image
     func coverModifier() -> some View {
         self
             .resizable()

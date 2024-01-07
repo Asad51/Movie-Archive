@@ -13,6 +13,7 @@ struct GenreCapsule: View {
     var body: some View {
         HStack(alignment: .center) {
             Text(genre)
+                .font(.caption2)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 5)
                 .background(.gray.opacity(0.1))

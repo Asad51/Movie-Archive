@@ -12,6 +12,8 @@ struct MovieListRow: View {
 
     var body: some View {
         HStack(spacing: 10) {
+            // MARK: - Poster image
+
             AsyncImage(url: URL(string: movie.posterUrl)) { image in
                 image
                     .posterModifier()
@@ -20,22 +22,25 @@ struct MovieListRow: View {
                     .posterModifier()
             }
 
-            VStack(alignment: .leading, spacing: 10) {
+            // MARK: - Movie info
+
+            VStack(alignment: .leading, spacing: 5) {
                 Text(movie.title)
                     .font(.headline)
                     .lineLimit(1)
 
+                Text(movie.director)
+                    .font(.subheadline)
+
                 HStack(spacing: 5) {
                     Text(movie.year.toString())
-
-                    Spacer()
-                        .frame(width: 20)
 
                     Image(systemName: "star.fill")
                         .foregroundStyle(.yellow)
 
                     Text("\(String(format: "%.1f", movie.imdbRating))")
                 }
+                .font(.caption)
 
                 genreView
             }
@@ -44,6 +49,8 @@ struct MovieListRow: View {
         }
         .frame(maxWidth: .infinity)
     }
+
+    // MARK: - Genre View
 
     private var genreView: some View {
         let genres = Array(movie.genres)
@@ -62,6 +69,10 @@ struct MovieListRow: View {
 }
 
 private extension Image {
+    // MARK: - Poster image modifier
+
+    /// Modify poster image
+    /// - Returns: Returns modified image
     func posterModifier() -> some View {
         self
             .resizable()
