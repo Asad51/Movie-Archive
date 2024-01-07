@@ -18,6 +18,8 @@ struct AddMovieView: View {
     @State private var language: String = Language.english.rawValue
     @State private var genres: Set<String> = []
     @State private var imdbRating: Double = 0.0
+    @State private var posterUrl: String = ""
+    @State private var coverUrl: String = ""
 
     var body: some View {
         Form {
@@ -61,12 +63,26 @@ struct AddMovieView: View {
             }
 
             VStack(alignment: .leading) {
-                Text("IMDB Rating:")
+                HStack {
+                    Text("IMDB Rating:")
+                    Stepper("", value: $imdbRating, in: 0.0 ... 10.0, step: 0.1)
+                }
+
                 RatingSlider(rating: $imdbRating)
             }
 
+            LabeledContent("Poster") {
+                TextField("Enter poster image url", text: $posterUrl, axis: .vertical)
+                    .textFieldStyle(.roundedBorder)
+            }
+
+            LabeledContent("Cover") {
+                TextField("Enter cover image url", text: $coverUrl, axis: .vertical)
+                    .textFieldStyle(.roundedBorder)
+            }
+
             Button("Create") {
-                let newMovie = Movie(title: title, director: director, year: year, language: language, genres: genres, imdbRating: imdbRating)
+                let newMovie = Movie(title: title, director: director, year: year, language: language, genres: genres, imdbRating: imdbRating, posterUrl: posterUrl, coverUrl: coverUrl)
                 context.insert(newMovie)
 
                 dismiss()
