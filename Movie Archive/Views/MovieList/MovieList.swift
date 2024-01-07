@@ -45,6 +45,7 @@ struct MovieList: View {
                         .foregroundStyle(.black)
                         .listSectionSeparator(.hidden)
                         .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 0))
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             selectedMovie = movie
                         }
