@@ -10,7 +10,7 @@ import SwiftUI
 struct RatingSlider: View {
     @Binding var rating: Double
 
-    let sliderColor = LinearGradient(colors: [.red, .yellow, .green, .cyan, .blue], startPoint: .leading, endPoint: .trailing)
+    let sliderColor = LinearGradient(colors: Constants.ratingColors, startPoint: .leading, endPoint: .trailing)
 
     var body: some View {
         GeometryReader { proxy in

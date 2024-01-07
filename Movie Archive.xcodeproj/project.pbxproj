@@ -31,6 +31,7 @@
 		DCB50C922B39EB2C007986EE /* MovieOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB50C912B39EB2C007986EE /* MovieOverview.swift */; };
 		DCC9FEE12B45B9870082BDB1 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC9FEE02B45B9870082BDB1 /* MovieListView.swift */; };
 		DCC9FEE32B45B99D0082BDB1 /* MovieListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC9FEE22B45B99D0082BDB1 /* MovieListRow.swift */; };
+		DCDA17592B4B2FEB007A0478 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA17582B4B2FEB007A0478 /* Constants.swift */; };
 		DCDD72CD2B4A77D300CAA4AE /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDD72CC2B4A77D300CAA4AE /* SortOption.swift */; };
 		DCE8DC392B3B373400588D1E /* EditMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8DC382B3B373400588D1E /* EditMovieView.swift */; };
 		DCE8DC3F2B3B446500588D1E /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8DC3E2B3B446500588D1E /* Color+Extensions.swift */; };
@@ -66,6 +67,7 @@
 		DCB50C912B39EB2C007986EE /* MovieOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOverview.swift; sourceTree = "<group>"; };
 		DCC9FEE02B45B9870082BDB1 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
 		DCC9FEE22B45B99D0082BDB1 /* MovieListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListRow.swift; sourceTree = "<group>"; };
+		DCDA17582B4B2FEB007A0478 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCDD72CC2B4A77D300CAA4AE /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		DCE8DC382B3B373400588D1E /* EditMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMovieView.swift; sourceTree = "<group>"; };
 		DCE8DC3E2B3B446500588D1E /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				DCB50C842B39CACC007986EE /* Genre.swift */,
 				DCDD72CC2B4A77D300CAA4AE /* SortOption.swift */,
 				DC0843882B44872C00A260FE /* FilterOption.swift */,
+				DCDA17582B4B2FEB007A0478 /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				DCF628CA2B3C6BFD00F3FDF3 /* RatingSlider.swift in Sources */,
 				DCB50C8A2B39E105007986EE /* IMDBRatingCircle.swift in Sources */,
 				DCF628CC2B3C7E4800F3FDF3 /* Double+Extensions.swift in Sources */,
+				DCDA17592B4B2FEB007A0478 /* Constants.swift in Sources */,
 				DCB50C5A2B3977A4007986EE /* ContentView.swift in Sources */,
 				DCDD72CD2B4A77D300CAA4AE /* SortOption.swift in Sources */,
 				DCB50C582B3977A4007986EE /* Movie_ArchiveApp.swift in Sources */,

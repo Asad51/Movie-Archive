@@ -24,10 +24,11 @@ struct IMDBRatingCircle: View {
                     .stroke(.gray, lineWidth: 3.0)
             )
             .overlay {
+                let ratingColor = Constants.ratingColors[max(0, Int(rating / 1.0) - 1)]
                 Circle()
                     .inset(by: 3)
                     .trim(from: 0.0, to: rating * 0.1).rotation(.degrees(-90))
-                    .stroke(.blue, lineWidth: 3.0)
+                    .stroke(ratingColor, lineWidth: 3.0)
             }
     }
 }
