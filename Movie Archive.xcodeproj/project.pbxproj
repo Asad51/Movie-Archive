@@ -39,6 +39,12 @@
 		DCF628CC2B3C7E4800F3FDF3 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF628CB2B3C7E4800F3FDF3 /* Double+Extensions.swift */; };
 		DCF628CE2B3C9B5C00F3FDF3 /* GenrePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF628CD2B3C9B5C00F3FDF3 /* GenrePicker.swift */; };
 		DCF628D02B3CA97B00F3FDF3 /* GenreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF628CF2B3CA97B00F3FDF3 /* GenreView.swift */; };
+		DCF7B5E72B4C5CA200A8E57F /* FilterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7B5E62B4C5CA200A8E57F /* FilterSelectionView.swift */; };
+		DCF7B5EA2B4C647200A8E57F /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7B5E92B4C647200A8E57F /* LanguageSelectionView.swift */; };
+		DCF7B5EC2B4C677700A8E57F /* YearSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7B5EB2B4C677700A8E57F /* YearSelectionView.swift */; };
+		DCF7B5EE2B4C67D600A8E57F /* GenreSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7B5ED2B4C67D600A8E57F /* GenreSelectionView.swift */; };
+		DCF7B5F02B4C682400A8E57F /* RatingSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7B5EF2B4C682400A8E57F /* RatingSelectionView.swift */; };
+		DCF7B5F22B4C687C00A8E57F /* StatusSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7B5F12B4C687C00A8E57F /* StatusSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +81,12 @@
 		DCF628CB2B3C7E4800F3FDF3 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		DCF628CD2B3C9B5C00F3FDF3 /* GenrePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenrePicker.swift; sourceTree = "<group>"; };
 		DCF628CF2B3CA97B00F3FDF3 /* GenreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreView.swift; sourceTree = "<group>"; };
+		DCF7B5E62B4C5CA200A8E57F /* FilterSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionView.swift; sourceTree = "<group>"; };
+		DCF7B5E92B4C647200A8E57F /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
+		DCF7B5EB2B4C677700A8E57F /* YearSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearSelectionView.swift; sourceTree = "<group>"; };
+		DCF7B5ED2B4C67D600A8E57F /* GenreSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSelectionView.swift; sourceTree = "<group>"; };
+		DCF7B5EF2B4C682400A8E57F /* RatingSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingSelectionView.swift; sourceTree = "<group>"; };
+		DCF7B5F12B4C687C00A8E57F /* StatusSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +179,7 @@
 				DCC9FEE02B45B9870082BDB1 /* MovieListView.swift */,
 				DC111B332B4730CC00DD5765 /* MovieList.swift */,
 				DCC9FEE22B45B99D0082BDB1 /* MovieListRow.swift */,
+				DCF7B5E82B4C643300A8E57F /* FilterView */,
 				DCC9FEE42B45B9A10082BDB1 /* HorizontalList */,
 				DCB50C8E2B39EAAD007986EE /* Movie */,
 				DCB50C8B2B39E846007986EE /* Genre */,
@@ -213,6 +226,19 @@
 				DC08438C2B44977600A260FE /* HorizontalMovieRow.swift */,
 			);
 			path = HorizontalList;
+			sourceTree = "<group>";
+		};
+		DCF7B5E82B4C643300A8E57F /* FilterView */ = {
+			isa = PBXGroup;
+			children = (
+				DCF7B5E62B4C5CA200A8E57F /* FilterSelectionView.swift */,
+				DCF7B5E92B4C647200A8E57F /* LanguageSelectionView.swift */,
+				DCF7B5EB2B4C677700A8E57F /* YearSelectionView.swift */,
+				DCF7B5ED2B4C67D600A8E57F /* GenreSelectionView.swift */,
+				DCF7B5EF2B4C682400A8E57F /* RatingSelectionView.swift */,
+				DCF7B5F12B4C687C00A8E57F /* StatusSelectionView.swift */,
+			);
+			path = FilterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,13 +312,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCB50C8D2B39E865007986EE /* GenreCapsule.swift in Sources */,
+				DCF7B5F22B4C687C00A8E57F /* StatusSelectionView.swift in Sources */,
 				DC0843832B447F4300A260FE /* MovieCategories.swift in Sources */,
 				DCF628CA2B3C6BFD00F3FDF3 /* RatingSlider.swift in Sources */,
 				DCB50C8A2B39E105007986EE /* IMDBRatingCircle.swift in Sources */,
+				DCF7B5EC2B4C677700A8E57F /* YearSelectionView.swift in Sources */,
 				DCF628CC2B3C7E4800F3FDF3 /* Double+Extensions.swift in Sources */,
 				DCDA17592B4B2FEB007A0478 /* Constants.swift in Sources */,
 				DCB50C5A2B3977A4007986EE /* ContentView.swift in Sources */,
 				DCDD72CD2B4A77D300CAA4AE /* SortOption.swift in Sources */,
+				DCF7B5EA2B4C647200A8E57F /* LanguageSelectionView.swift in Sources */,
+				DCB50C5A2B3977A4007986EE /* ContentView.swift in Sources */,
+				DCF7B5EE2B4C67D600A8E57F /* GenreSelectionView.swift in Sources */,
 				DCB50C582B3977A4007986EE /* Movie_ArchiveApp.swift in Sources */,
 				DCB50C922B39EB2C007986EE /* MovieOverview.swift in Sources */,
 				DC08438D2B44977600A260FE /* HorizontalMovieRow.swift in Sources */,
@@ -309,11 +340,13 @@
 				DC111B322B470EF500DD5765 /* SwiftDataPreview.swift in Sources */,
 				DCB50C6B2B397A51007986EE /* PreviewMovies.swift in Sources */,
 				DC0843892B44872C00A260FE /* FilterOption.swift in Sources */,
+				DCF7B5E72B4C5CA200A8E57F /* FilterSelectionView.swift in Sources */,
 				DCE8DC3F2B3B446500588D1E /* Color+Extensions.swift in Sources */,
 				DCC9FEE12B45B9870082BDB1 /* MovieListView.swift in Sources */,
 				DC111B342B4730CC00DD5765 /* MovieList.swift in Sources */,
 				DCB50C812B39C35F007986EE /* AddMovieView.swift in Sources */,
 				DC111B2E2B4704B800DD5765 /* PreviewContainer.swift in Sources */,
+				DCF7B5F02B4C682400A8E57F /* RatingSelectionView.swift in Sources */,
 				DCB50C832B39CA4B007986EE /* Language.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

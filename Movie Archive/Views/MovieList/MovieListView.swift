@@ -12,7 +12,8 @@ struct MovieListView: View {
     @State private var searchText: String = ""
     @FocusState private var searchFieldFocused: Bool
 
-    @State var sortOption: SortOption
+    @State var sortOption: SortOption = .none
+    @State var filterOption: FilterOption = .none
 
     var body: some View {
         VStack {
@@ -53,27 +54,45 @@ struct MovieListView: View {
                 }
                 .animation(.easeIn, value: searchFieldFocused)
 
-                // MARK: - Sort Option Picker
-
                 HStack {
-                    Text("Sort By:")
+                    // MARK: - Filter selection
 
-                    Picker(selection: $sortOption) {
-                        ForEach(SortOption.allCases, id: \.rawValue) { option in
-                            Text(option.rawValue)
-                                .tag(option)
+                    FilterSelectionView(filterOption: $filterOption)
+
+                    Spacer()
+
+                    // MARK: - Sort menu
+
+                    Menu {
+                        Picker("", selection: $sortOption) {
+                            ForEach(SortOption.allCases, id: \.rawValue) { option in
+                                Text(option.rawValue)
+                                    .tag(option)
+                            }
                         }
                     } label: {
-                        Text("Select Option")
+                        HStack {
+                            Text("Sort")
+                            Image(systemName: "arrow.up.arrow.down")
+                        }
+                        .bold()
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(lineWidth: 2)
+                        )
+                        .foregroundStyle(.tint)
                     }
                 }
             }
             .padding(.horizontal)
             .padding(.top, 10)
 
-            MovieList(searchText: searchText, sortOption: sortOption)
-                .animation(.smooth, value: sortOption)
+            MovieList(searchText: searchText, sortOption: sortOption, filterOption: filterOption)
                 .animation(.easeIn, value: searchText)
+                .animation(.easeIn, value: sortOption)
+                .animation(.easeIn, value: filterOption)
 
             Spacer()
         }
@@ -84,6 +103,7 @@ struct MovieListView: View {
                     .font(.title)
             }
         }
+        .ignoresSafeArea(edges: .bottom)
     }
 }
 

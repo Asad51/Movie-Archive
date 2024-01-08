@@ -13,7 +13,55 @@ struct MovieList: View {
 
     @State private var selectedMovie: Movie?
 
-    init(searchText: String, sortOption: SortOption) {
+    init(searchText: String, sortOption: SortOption, filterOption: FilterOption = .none) {
+        var predicate = #Predicate<Movie> {
+            searchText.isEmpty == true ||
+                $0.title.localizedStandardContains(searchText) == true
+        }
+
+        // MARK: - Predicates
+
+        switch filterOption {
+            case let .language(language):
+                predicate = #Predicate {
+                    $0.language.localizedStandardContains(language) && (
+                        searchText.isEmpty ||
+                            $0.title.localizedStandardContains(searchText))
+                }
+            case let .year(year):
+                predicate = #Predicate {
+                    $0.year == year && (
+                        searchText.isEmpty ||
+                            $0.title.localizedStandardContains(searchText))
+                }
+            case let .genre(genre):
+                // FIXME: - Crashes
+//                predicate = #Predicate {
+//                    $0.genres.contains(genre) &&
+//                        searchText.isEmpty ||
+//                        $0.title.localizedStandardContains(searchText)
+//                }
+                break
+            case let .rating(rating):
+                predicate = #Predicate {
+                    $0.imdbRating >= rating && (
+                        searchText.isEmpty ||
+                            $0.title.localizedStandardContains(searchText))
+                }
+            case let .status(status):
+                // FIXME: - Crashes
+//                predicate = #Predicate {
+//                    $0.status == status.rawValue &&
+//                        searchText.isEmpty ||
+//                        $0.title.localizedStandardContains(searchText)
+//                }
+                break
+            default:
+                break
+        }
+
+        // MARK: - Sort descriptors
+
         let sortDescriptors: [SortDescriptor<Movie>] = switch sortOption {
             case .title:
                 [SortDescriptor(\Movie.title)]
@@ -25,19 +73,20 @@ struct MovieList: View {
                 []
         }
 
-        _movies = Query(
-            filter: #Predicate {
-                searchText.isEmpty ||
-                    $0.title.localizedStandardContains(searchText)
-            },
-            sort: sortDescriptors
+        let fetchDescriptor = FetchDescriptor<Movie>(
+            predicate: predicate,
+            sortBy: sortDescriptors
         )
+
+        _movies = Query(fetchDescriptor)
     }
 
     var body: some View {
         if movies.count == 0 {
             ContentUnavailableView.search
         } else {
+            // MARK: - Movie list
+
             List {
                 ForEach(movies) { movie in
                     MovieListRow(movie: movie)

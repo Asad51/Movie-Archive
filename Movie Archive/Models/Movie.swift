@@ -40,7 +40,18 @@ class Movie {
 }
 
 enum Status: Int, CaseIterable {
-    case neverWatched
+    case neverWatched = 0
     case watching
     case watched
+
+    var description: String {
+        switch self {
+            case .neverWatched:
+                "Never Watched"
+            case .watching:
+                "Watching"
+            case .watched:
+                "Watched"
+        }
+    }
 }

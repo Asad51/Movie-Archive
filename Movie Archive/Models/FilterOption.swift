@@ -6,12 +6,34 @@
 //
 
 import Foundation
+import SwiftUI
 
-enum FilterOption: String, CaseIterable {
-    case none = "None"
-    case director = "Director"
-    case year = "Year"
-    case genre = "Genre"
-    case rating = "Rating"
-    case status = "Status"
+enum FilterOption: CaseIterable, Hashable {
+    static var allCases: [FilterOption] {
+        return [.none, .language(), .year(), .genre(), .rating(), .status()]
+    }
+
+    case none
+    case language(language: String = Language.english.rawValue)
+    case year(year: Date = Date(from: "2023"))
+    case genre(genre: String = Genre.action.rawValue)
+    case rating(rating: Double = 0.0)
+    case status(status: Status = .neverWatched)
+
+    var description: String {
+        switch self {
+            case .none:
+                "None"
+            case .language:
+                "Language"
+            case .year:
+                "Year"
+            case .genre:
+                "Genre"
+            case .rating:
+                "Rating"
+            case .status:
+                "Status"
+        }
+    }
 }
