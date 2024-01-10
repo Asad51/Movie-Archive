@@ -13,11 +13,11 @@ struct Movie_ArchiveApp: App {
     let container: ModelContainer
 
     init() {
-        let schema = Schema([Movie.self])
+        let schema = Schema([Movie.self, Director.self])
         let config = ModelConfiguration("Movies", schema: schema)
 
         do {
-            container = try ModelContainer(for: Movie.self, configurations: config)
+            container = try ModelContainer(for: Movie.self, Director.self, configurations: config)
         } catch {
             fatalError("Could not configure the model container.")
         }
