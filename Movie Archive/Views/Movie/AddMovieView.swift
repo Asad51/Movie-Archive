@@ -12,14 +12,18 @@ struct AddMovieView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
 
+    @Query(sort: \Director.name) private var directors: [Director]
+
     @State private var title: String = ""
-    @State private var director: String = ""
+    @State private var director: Director?
     @State private var year: Date = .init(from: "2023")
     @State private var language: String = Language.english.rawValue
     @State private var genres: Set<String> = []
     @State private var imdbRating: Double = 0.0
     @State private var posterUrl: String = ""
     @State private var coverUrl: String = ""
+
+    @State private var showAddDirectorView: Bool = false
 
     var body: some View {
         Form {
@@ -29,8 +33,15 @@ struct AddMovieView: View {
             }
 
             LabeledContent("Director") {
-                TextField("", text: $director)
-                    .textFieldStyle(.roundedBorder)
+                Picker("", selection: $director) {
+                    Text("Select director")
+                        .foregroundStyle(.gray)
+
+                    ForEach(directors, id: \.name) { director in
+                        Text(director.name)
+                            .tag(director as? Director)
+                    }
+                }
             }
 
             Picker("Language", selection: $language) {
@@ -94,9 +105,25 @@ struct AddMovieView: View {
             .navigationTitle("New Movie")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showAddDirectorView.toggle()
+                } label: {
+                    Text("Add Director")
+                }
+            }
+        }
+        .sheet(isPresented: $showAddDirectorView, content: {
+            AddDirectorView()
+        })
     }
 }
 
 #Preview {
-    AddMovieView()
+    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self, Director.self]), items: Director.previewDirectors) {
+        NavigationStack {
+            AddMovieView()
+        }
+    }
 }

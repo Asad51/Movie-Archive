@@ -5,13 +5,17 @@
 //  Created by Md. Asadul Islam on 26/12/23.
 //
 
+import SwiftData
 import SwiftUI
 
 struct EditMovieView: View {
+    @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
 
+    @Query(sort: \Director.name) private var directors: [Director]
+
     @State private var title: String = ""
-    @State private var director: String = ""
+    @State private var director: Director?
     @State private var year: Date = .init(from: "2023")
     @State private var language: String = Language.english.rawValue
     @State private var genres: Set<String> = []
@@ -34,8 +38,15 @@ struct EditMovieView: View {
                     }
 
                     LabeledContent("Director") {
-                        TextField("", text: $director)
-                            .textFieldStyle(.roundedBorder)
+                        Picker("", selection: $director) {
+                            Text("Select director")
+                                .foregroundStyle(.gray)
+
+                            ForEach(directors, id: \.name) { director in
+                                Text(director.name)
+                                    .tag(director as? Director)
+                            }
+                        }
                     }
 
                     LabeledContent {
@@ -112,7 +123,7 @@ struct EditMovieView: View {
                             .textFieldStyle(.roundedBorder)
                     }
                 }
-                
+
                 Text("Overview")
                     .foregroundStyle(.secondary)
 
@@ -160,7 +171,7 @@ struct EditMovieView: View {
 }
 
 #Preview {
-    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self])) {
+    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self, Director.self]), items: Director.previewDirectors) {
         EditMovieView(movie: Movie.previewMovies[0])
     }
 }

@@ -56,7 +56,7 @@ struct MovieDetails: View {
                                     .font(.headline)
                                     .lineLimit(2)
 
-                                Text("\(movie.director) · \(movie.year.toString())")
+                                Text("\(movie.director?.name ?? "") · \(movie.year.toString())")
                                     .font(.subheadline)
                             }
                             .foregroundStyle(.white)

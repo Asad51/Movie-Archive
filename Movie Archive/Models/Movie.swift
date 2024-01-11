@@ -11,7 +11,7 @@ import SwiftData
 @Model
 class Movie {
     var title: String
-    var director: String
+    var director: Director?
     var year: Date
     var language: String
     var genres: Set<String>
@@ -23,7 +23,7 @@ class Movie {
     var recommedBy: String
     var status: Status.RawValue = Status.neverWatched.rawValue // Set default value for newly added required property
 
-    init(title: String, director: String, year: Date, language: String, genres: Set<String>, imdbRating: Double, myRating: Int = 0, posterUrl: String = "", coverUrl: String = "", trailerUrl: String = "", recommendBy: String = "", status: Status = .neverWatched) {
+    init(title: String, director: Director? = nil, year: Date, language: String, genres: Set<String>, imdbRating: Double, myRating: Int = 0, posterUrl: String = "", coverUrl: String = "", trailerUrl: String = "", recommendBy: String = "", status: Status = .neverWatched) {
         self.title = title
         self.director = director
         self.year = year

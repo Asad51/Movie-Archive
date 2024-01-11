@@ -29,7 +29,7 @@ struct MovieListRow: View {
                     .font(.headline)
                     .lineLimit(1)
 
-                Text(movie.director)
+                Text(movie.director?.name ?? "")
                     .font(.subheadline)
 
                 HStack(spacing: 5) {

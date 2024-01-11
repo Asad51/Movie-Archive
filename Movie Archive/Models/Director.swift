@@ -18,8 +18,8 @@ class Director {
     var picture: String
     var biography: String
 
-    // @Relationship(deleteRule: .cascade, inverse: \Movie.director)
-    // var movies: [Movie] = []
+    @Relationship(deleteRule: .cascade, inverse: \Movie.director)
+    var movies: [Movie] = []
 
     init(name: String, birthDate: Date, country: String, picture: String, biography: String) {
         self.name = name
