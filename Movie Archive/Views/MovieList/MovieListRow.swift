@@ -86,12 +86,10 @@ private extension Image {
 }
 
 #Preview {
-    SwiftDataPreview(previewContainer: PreviewContainer([Movie.self])) {
-        VStack {
-            MovieListRow(movie: Movie.previewMovies[4])
-                .background(Color.gray.opacity(0.1))
-            MovieListRow(movie: Movie.previewMovies[6])
-                .background(Color.gray.opacity(0.1))
-        }
+    VStack {
+        MovieListRow(movie: Movie.previewMovies[4])
+            .background(Color.gray.opacity(0.1))
+        MovieListRow(movie: Movie.previewMovies[6])
+            .background(Color.gray.opacity(0.1))
     }
 }

@@ -18,7 +18,7 @@ enum FilterOption: CaseIterable, Hashable {
     case year(year: Date = Date(from: "2023"))
     case genre(genre: String = Genre.action.rawValue)
     case rating(rating: Double = 0.0)
-    case status(status: Status = .neverWatched)
+    case status(status: Int = Status.neverWatched.rawValue)
     case director(name: String = "")
 
     var description: String {

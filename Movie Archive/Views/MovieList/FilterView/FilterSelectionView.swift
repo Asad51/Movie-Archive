@@ -41,8 +41,7 @@ struct FilterSelectionView: View {
                 case .year:
                     YearSelectionView(filterOption: $filterOption)
                 case .genre:
-                    Text("Not Implemented")
-                // GenreSelectionView(filterOption: $filterOption)
+                    GenreSelectionView(filterOption: $filterOption)
                 case .rating:
                     RatingSelectionView(filterOption: $filterOption)
                 case .status:

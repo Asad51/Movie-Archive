@@ -49,13 +49,11 @@ struct MovieList: View {
                             $0.title.localizedStandardContains(searchText))
                 }
             case let .status(status):
-                // FIXME: - Crashes
-//                predicate = #Predicate {
-//                    $0.status == status.rawValue &&
-//                        searchText.isEmpty ||
-//                        $0.title.localizedStandardContains(searchText)
-//                }
-                break
+                predicate = #Predicate {
+                    $0.status == status && (
+                        searchText.isEmpty ||
+                            $0.title.localizedStandardContains(searchText))
+                }
             case let .director(name):
                 predicate = #Predicate {
                     name.isEmpty ||

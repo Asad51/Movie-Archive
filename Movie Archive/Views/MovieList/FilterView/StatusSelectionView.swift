@@ -19,14 +19,14 @@ struct StatusSelectionView: View {
             }
         }
         .onChange(of: status) {
-            filterOption = .status(status: status)
+            filterOption = .status(status: status.rawValue)
         }
         .onAppear {
-            filterOption = .status(status: status)
+            filterOption = .status(status: status.rawValue)
         }
     }
 }
 
 #Preview {
-    StatusSelectionView(filterOption: .constant(.status(status: .neverWatched)))
+    StatusSelectionView(filterOption: .constant(.status(status: Status.neverWatched.rawValue)))
 }
