@@ -47,12 +47,16 @@ struct FilterSelectionView: View {
                     RatingSelectionView(filterOption: $filterOption)
                 case .status:
                     Text("Not Implemented")
-                    // StatusSelectionView(filterOption: $filterOption)
+                // StatusSelectionView(filterOption: $filterOption)
+                case .director:
+                    DirectorSelectionView(filterOption: $filterOption)
             }
         }
     }
 }
 
 #Preview {
-    FilterSelectionView(filterOption: .constant(.language()))
+    SwiftDataPreview(previewContainer: PreviewContainer([Director.self]), items: Director.previewDirectors) {
+        FilterSelectionView(filterOption: .constant(.language()))
+    }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 
 enum FilterOption: CaseIterable, Hashable {
     static var allCases: [FilterOption] {
-        return [.none, .language(), .year(), .genre(), .rating(), .status()]
+        return [.none, .language(), .year(), .genre(), .rating(), .status(), .director()]
     }
 
     case none
@@ -19,6 +19,7 @@ enum FilterOption: CaseIterable, Hashable {
     case genre(genre: String = Genre.action.rawValue)
     case rating(rating: Double = 0.0)
     case status(status: Status = .neverWatched)
+    case director(name: String = "")
 
     var description: String {
         switch self {
@@ -34,6 +35,8 @@ enum FilterOption: CaseIterable, Hashable {
                 "Rating"
             case .status:
                 "Status"
+            case .director:
+                "Director"
         }
     }
 }

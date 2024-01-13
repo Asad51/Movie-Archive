@@ -60,30 +60,6 @@ struct MovieListView: View {
                     FilterSelectionView(filterOption: $filterOption)
 
                     Spacer()
-
-                    // MARK: - Sort menu
-
-                    Menu {
-                        Picker("", selection: $sortOption) {
-                            ForEach(SortOption.allCases, id: \.rawValue) { option in
-                                Text(option.rawValue)
-                                    .tag(option)
-                            }
-                        }
-                    } label: {
-                        HStack {
-                            Text("Sort")
-                            Image(systemName: "arrow.up.arrow.down")
-                        }
-                        .bold()
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .background(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(lineWidth: 2)
-                        )
-                        .foregroundStyle(.tint)
-                    }
                 }
             }
             .padding(.horizontal)
@@ -101,6 +77,28 @@ struct MovieListView: View {
             ToolbarItem(placement: .principal) {
                 Text("Movie List")
                     .font(.title)
+            }
+
+            ToolbarItem(placement: .topBarTrailing) {
+                // MARK: - Sort menu
+
+                Menu {
+                    Picker("", selection: $sortOption) {
+                        ForEach(SortOption.allCases, id: \.rawValue) { option in
+                            Text(option.rawValue)
+                                .tag(option)
+                        }
+                    }
+                } label: {
+                    HStack {
+                        Text(sortOption.rawValue)
+                        Image(systemName: "arrow.up.arrow.down")
+                            .resizable()
+                            .imageScale(.medium)
+                    }
+                    .bold()
+                    .foregroundStyle(.blue)
+                }
             }
         }
         .ignoresSafeArea(edges: .bottom)

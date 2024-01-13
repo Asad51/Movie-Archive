@@ -56,6 +56,13 @@ struct MovieList: View {
 //                        $0.title.localizedStandardContains(searchText)
 //                }
                 break
+            case let .director(name):
+                predicate = #Predicate {
+                    name.isEmpty ||
+                        $0.director?.name.localizedStandardContains(name) == true && (
+                            searchText.isEmpty ||
+                                $0.title.localizedStandardContains(searchText))
+                }
             default:
                 break
         }
