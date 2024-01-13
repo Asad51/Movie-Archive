@@ -13,10 +13,12 @@ struct MovieCategories: View {
 
     @Binding var showMovieList: Bool
     @Binding var sortOption: SortOption
+    @Binding var filterOption: FilterOption
 
-    let sections: [(headerText: String, sortBy: SortOption)] = [
-        (headerText: "Top Rated", sortBy: .rating),
-        (headerText: "Latest", sortBy: .year),
+    let sections: [(headerText: String, sortBy: SortOption, filterOption: FilterOption)] = [
+        (headerText: "Yet To Wtach", sortBy: .rating, filterOption: .status(status: Status.neverWatched.rawValue)),
+        (headerText: "Top Rated", sortBy: .rating, filterOption: .none),
+        (headerText: "Latest", sortBy: .year, filterOption: .none),
     ]
 
     var body: some View {
@@ -24,9 +26,9 @@ struct MovieCategories: View {
             ContentUnavailableView("No movies in the Library.", systemImage: "play.square.stack.fill", description: Text("Movies added to the libarry will be displayed here."))
         } else {
             List {
-                ForEach(sections, id: \.headerText) { headerText, sortBy in
+                ForEach(sections, id: \.headerText) { headerText, sortBy, filterOption in
                     Section {
-                        HorizontalMovieList(sortBy: sortBy)
+                        HorizontalMovieList(sortBy: sortBy, filterOption: filterOption)
                     } header: {
                         HStack {
                             Text(headerText)
@@ -37,6 +39,7 @@ struct MovieCategories: View {
                             Button {
                                 showMovieList.toggle()
                                 sortOption = sortBy
+                                self.filterOption = filterOption
                             } label: {
                                 Text("View All")
                             }
@@ -51,6 +54,6 @@ struct MovieCategories: View {
 
 #Preview {
     SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
-        MovieCategories(showMovieList: .constant(false), sortOption: .constant(.title))
+        MovieCategories(showMovieList: .constant(false), sortOption: .constant(.title), filterOption: .constant(.none))
     }
 }

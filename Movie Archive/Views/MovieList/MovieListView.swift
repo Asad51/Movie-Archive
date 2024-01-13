@@ -12,8 +12,8 @@ struct MovieListView: View {
     @State private var searchText: String = ""
     @FocusState private var searchFieldFocused: Bool
 
-    @State var sortOption: SortOption = .none
-    @State var filterOption: FilterOption = .none
+    @State var sortOption: SortOption
+    @State var filterOption: FilterOption
 
     var body: some View {
         VStack {
@@ -108,7 +108,7 @@ struct MovieListView: View {
 #Preview {
     SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
         NavigationStack {
-            MovieListView(sortOption: .rating)
+            MovieListView(sortOption: .rating, filterOption: .none)
                 .navigationBarTitleDisplayMode(.inline)
         }
     }

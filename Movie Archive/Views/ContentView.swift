@@ -13,10 +13,11 @@ struct ContentView: View {
 
     @State private var showMovieList: Bool = false
     @State private var sortOption: SortOption = .none
+    @State private var filterOption: FilterOption = .none
 
     var body: some View {
         NavigationStack {
-            MovieCategories(showMovieList: $showMovieList, sortOption: $sortOption)
+            MovieCategories(showMovieList: $showMovieList, sortOption: $sortOption, filterOption: $filterOption)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
@@ -46,7 +47,7 @@ struct ContentView: View {
                         .navigationBarTitleDisplayMode(.inline)
                 }
                 .navigationDestination(isPresented: $showMovieList) {
-                    MovieListView(sortOption: sortOption)
+                    MovieListView(sortOption: sortOption, filterOption: filterOption)
                         .navigationBarTitleDisplayMode(.inline)
                 }
         }

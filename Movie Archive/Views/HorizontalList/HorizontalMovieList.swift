@@ -11,7 +11,15 @@ import SwiftUI
 struct HorizontalMovieList: View {
     @Query(sort: \Movie.title) private var movies: [Movie]
 
-    init(sortBy sortOption: SortOption = .none) {
+    init(sortBy sortOption: SortOption = .none, filterOption: FilterOption) {
+        var predicate = #Predicate<Movie> { $0.title.isEmpty == false } // Default dummy filter, movie title can't be empty
+        switch filterOption {
+            case let .status(status):
+                predicate = #Predicate { $0.status == status }
+            default:
+                break
+        }
+
         let sortDescriptors: [SortDescriptor<Movie>] = switch sortOption {
             case .title:
                 [SortDescriptor(\Movie.title)]
@@ -24,6 +32,7 @@ struct HorizontalMovieList: View {
         }
 
         var fetchDescriptor = FetchDescriptor<Movie>(
+            predicate: predicate,
             sortBy: sortDescriptors
         )
         fetchDescriptor.fetchLimit = 10
@@ -56,7 +65,7 @@ struct HorizontalMovieList: View {
     SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
         NavigationStack {
             List {
-                HorizontalMovieList(sortBy: .year)
+                HorizontalMovieList(sortBy: .year, filterOption: .status(status: Status.neverWatched.rawValue))
             }
             .listStyle(.grouped)
         }

@@ -41,15 +41,19 @@ struct FilterSelectionView: View {
                 case .year:
                     YearSelectionView(filterOption: $filterOption)
                 case .genre:
-                    GenreSelectionView(filterOption: $filterOption)
+                    Text("Not Implemented")
+//                    GenreSelectionView(filterOption: $filterOption)
                 case .rating:
                     RatingSelectionView(filterOption: $filterOption)
                 case .status:
-                    Text("Not Implemented")
-                // StatusSelectionView(filterOption: $filterOption)
+                    StatusSelectionView(filterOption: $filterOption)
                 case .director:
-                    DirectorSelectionView(filterOption: $filterOption)
+                    Text("Not Implemented")
+//                    DirectorSelectionView(filterOption: $filterOption)
             }
+        }
+        .onAppear {
+            selectedOption = filterOption
         }
     }
 }
