@@ -22,6 +22,8 @@ struct EditMovieView: View {
     @State private var imdbRating: Double = 0
     @State private var posterUrl: String = ""
     @State private var coverUrl: String = ""
+    @State private var status: Status = .neverWatched
+    @State private var userRating: Int = 0
     @State private var overview: String = ""
 
     @State private var setInitialValue: Bool = true
@@ -122,6 +124,23 @@ struct EditMovieView: View {
                         TextField("Enter cover image url", text: $coverUrl, axis: .vertical)
                             .textFieldStyle(.roundedBorder)
                     }
+
+                    if movie.status != Status.watched.rawValue {
+                        LabeledContent("Status") {
+                            Picker("Status", selection: $status) {
+                                ForEach(Status.allCases, id: \.rawValue) { status in
+                                    Text(status.description)
+                                        .tag(status)
+                                }
+                            }
+                        }
+                    }
+
+                    if status == .watched {
+                        LabeledContent("User Rating") {
+                            UserRatingView(currentRating: $userRating)
+                        }
+                    }
                 }
 
                 Text("Overview")
@@ -149,6 +168,8 @@ struct EditMovieView: View {
                     movie.genres = genres
                     movie.posterUrl = posterUrl
                     movie.coverUrl = coverUrl
+                    movie.status = status.rawValue
+                    movie.userRating = userRating
                     dismiss()
                 }
                 .buttonStyle(.borderedProminent)
@@ -163,6 +184,8 @@ struct EditMovieView: View {
                     imdbRating = movie.imdbRating
                     posterUrl = movie.posterUrl
                     coverUrl = movie.coverUrl
+                    status = Status(rawValue: movie.status) ?? .neverWatched
+                    userRating = movie.userRating
                     setInitialValue = false
                 }
             }

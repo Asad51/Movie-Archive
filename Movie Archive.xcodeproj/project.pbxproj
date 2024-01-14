@@ -15,6 +15,7 @@
 		DC111B322B470EF500DD5765 /* SwiftDataPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC111B312B470EF500DD5765 /* SwiftDataPreview.swift */; };
 		DC111B342B4730CC00DD5765 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC111B332B4730CC00DD5765 /* MovieList.swift */; };
 		DC73C40B2B52B7EF002409CF /* DirectorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC73C40A2B52B7EF002409CF /* DirectorSelectionView.swift */; };
+		DCB0A0C82B54307A00D8701E /* UserRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0A0C72B54307A00D8701E /* UserRatingView.swift */; };
 		DCB50C582B3977A4007986EE /* Movie_ArchiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB50C572B3977A4007986EE /* Movie_ArchiveApp.swift */; };
 		DCB50C5A2B3977A4007986EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB50C592B3977A4007986EE /* ContentView.swift */; };
 		DCB50C5C2B3977A5007986EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCB50C5B2B3977A5007986EE /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		DC111B312B470EF500DD5765 /* SwiftDataPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataPreview.swift; sourceTree = "<group>"; };
 		DC111B332B4730CC00DD5765 /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
 		DC73C40A2B52B7EF002409CF /* DirectorSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorSelectionView.swift; sourceTree = "<group>"; };
+		DCB0A0C72B54307A00D8701E /* UserRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRatingView.swift; sourceTree = "<group>"; };
 		DCB50C542B3977A4007986EE /* Movie Archive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Archive.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB50C572B3977A4007986EE /* Movie_ArchiveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_ArchiveApp.swift; sourceTree = "<group>"; };
 		DCB50C592B3977A4007986EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				DCB50C892B39E105007986EE /* IMDBRatingCircle.swift */,
 				DCF628C92B3C6BFD00F3FDF3 /* RatingSlider.swift */,
+				DCB0A0C72B54307A00D8701E /* UserRatingView.swift */,
 			);
 			path = Rating;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				DCB50C5A2B3977A4007986EE /* ContentView.swift in Sources */,
 				DCDD72CD2B4A77D300CAA4AE /* SortOption.swift in Sources */,
 				DCF7B5EA2B4C647200A8E57F /* LanguageSelectionView.swift in Sources */,
+				DCB0A0C82B54307A00D8701E /* UserRatingView.swift in Sources */,
 				DC73C40B2B52B7EF002409CF /* DirectorSelectionView.swift in Sources */,
 				DCF4C74A2B4F192A00EF77B5 /* Director.swift in Sources */,
 				DCB50C5A2B3977A4007986EE /* ContentView.swift in Sources */,
