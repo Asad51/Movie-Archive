@@ -22,6 +22,12 @@ struct StatusSelectionView: View {
             filterOption = .status(status: status.rawValue)
         }
         .onAppear {
+            switch filterOption {
+                case let .status(statusValue):
+                    status = Status(rawValue: statusValue) ?? .neverWatched
+                default:
+                    break
+            }
             filterOption = .status(status: status.rawValue)
         }
     }

@@ -16,6 +16,7 @@ struct MovieCategories: View {
     @Binding var filterOption: FilterOption
 
     let sections: [(headerText: String, sortBy: SortOption, filterOption: FilterOption)] = [
+        (headerText: "Continue Watching", sortBy: .title, filterOption: .status(status: Status.watching.rawValue)),
         (headerText: "Yet To Wtach", sortBy: .rating, filterOption: .status(status: Status.neverWatched.rawValue)),
         (headerText: "Top Rated", sortBy: .rating, filterOption: .none),
         (headerText: "Latest", sortBy: .year, filterOption: .none),

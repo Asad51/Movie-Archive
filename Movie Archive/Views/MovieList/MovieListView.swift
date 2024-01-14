@@ -101,7 +101,6 @@ struct MovieListView: View {
                 }
             }
         }
-        .ignoresSafeArea(edges: .bottom)
     }
 }
 
