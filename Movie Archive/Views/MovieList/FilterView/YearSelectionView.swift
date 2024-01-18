@@ -9,7 +9,7 @@ import SwiftUI
 
 struct YearSelectionView: View {
     @Binding var filterOption: FilterOption
-    @State private var year: Date = .init(from: "2024")
+    @State private var year: Date = Date()
 
     let years = Array(1900 ... 2024)
         .reversed()
@@ -17,6 +17,8 @@ struct YearSelectionView: View {
 
     var body: some View {
         Picker("Year", selection: $year) {
+            Text("Select Year")
+            
             ForEach(years, id: \.self) { year in
                 Text(year, format: .dateTime.year())
                     .tag(year)
@@ -26,7 +28,9 @@ struct YearSelectionView: View {
             filterOption = .year(year: year)
         }
         .onAppear {
-            filterOption = .year(year: year)
+            if case let .year(year) = filterOption {
+                self.year = year
+            }
         }
     }
 }

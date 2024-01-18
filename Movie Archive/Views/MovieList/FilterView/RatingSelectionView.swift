@@ -9,10 +9,11 @@ import SwiftUI
 
 struct RatingSelectionView: View {
     @Binding var filterOption: FilterOption
-    @State private var rating: Int = 1
+    @State private var rating: Int = 0
 
     var body: some View {
         Picker("", selection: $rating) {
+            Text("Select Rating")
             ForEach(1 ..< 10, id: \.self) { ratingValue in
                 Text("\(ratingValue)+")
                     .tag(ratingValue)
@@ -22,7 +23,9 @@ struct RatingSelectionView: View {
             filterOption = .rating(rating: Double(rating))
         }
         .onAppear {
-            filterOption = .rating(rating: Double(rating))
+            if case let .rating(rating) = filterOption {
+                self.rating = Int(rating)
+            }
         }
     }
 }

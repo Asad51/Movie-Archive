@@ -9,10 +9,12 @@ import SwiftUI
 
 struct GenreSelectionView: View {
     @Binding var filterOption: FilterOption
-    @State private var genre: String = Genre.action.rawValue
+    @State private var genre: String = ""
 
     var body: some View {
         Picker("Select Genre", selection: $genre) {
+            Text("Select Genre")
+            
             ForEach(Genre.allCases, id: \.rawValue) { genre in
                 Text(genre.rawValue)
                     .tag(genre)
@@ -22,7 +24,9 @@ struct GenreSelectionView: View {
             filterOption = .genre(genre: genre)
         }
         .onAppear {
-            filterOption = .genre(genre: genre)
+            if case let .genre(genre) = filterOption {
+                self.genre = genre
+            }
         }
     }
 }

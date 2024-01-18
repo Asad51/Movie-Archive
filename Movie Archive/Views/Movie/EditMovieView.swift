@@ -22,7 +22,7 @@ struct EditMovieView: View {
     @State private var imdbRating: Double = 0
     @State private var posterUrl: String = ""
     @State private var coverUrl: String = ""
-    @State private var status: Status = .neverWatched
+    @State private var status: Status = .unknown
     @State private var userRating: Int = 0
     @State private var overview: String = ""
 

@@ -24,9 +24,9 @@ class Movie {
     var coverUrl: String
     var trailerUrl: String
     var recommedBy: String
-    var status: Int = Status.neverWatched.rawValue // Set default value for newly added required property
+    var status: Int = Status.unknown.rawValue // Set default value for newly added required property
 
-    init(title: String, director: Director? = nil, year: Date, language: String, genres: Set<String>, imdbRating: Double, userRating: Int = 0, posterUrl: String = "", coverUrl: String = "", trailerUrl: String = "", recommendBy: String = "", status: Status = .neverWatched) {
+    init(title: String, director: Director? = nil, year: Date, language: String, genres: Set<String>, imdbRating: Double, userRating: Int = 0, posterUrl: String = "", coverUrl: String = "", trailerUrl: String = "", recommendBy: String = "", status: Status = .unknown) {
         self.title = title
         self.director = director
         self.year = year
@@ -43,12 +43,15 @@ class Movie {
 }
 
 enum Status: Int, CaseIterable {
+    case unknown = -1
     case neverWatched = 0
     case watching = 1
     case watched = 2
 
     var description: String {
         switch self {
+            case .unknown:
+                "Unknown"
             case .neverWatched:
                 "Never Watched"
             case .watching:

@@ -7,10 +7,21 @@
 
 import SwiftUI
 
+fileprivate enum MovieFilterSelection: String, CaseIterable {
+    case none = "None"
+    case language = "Language"
+    case year = "Year"
+    case genre = "Genre"
+    case rating = "Rating"
+    case status = "Status"
+    case director = "Director"
+}
+
 struct FilterSelectionView: View {
     @Binding var filterOption: FilterOption
 
-    @State private var selectedOption: FilterOption = .none
+    @State private var selectedOption: MovieFilterSelection = .none
+    @State private var initialValue: Bool = true
 
     var body: some View {
         HStack {
@@ -20,14 +31,17 @@ struct FilterSelectionView: View {
                 Text("Filter:")
 
                 Picker("Select filter option", selection: $selectedOption) {
-                    ForEach(FilterOption.allCases, id: \.description) { option in
-                        Text(option.description)
+                    ForEach(MovieFilterSelection.allCases, id: \.rawValue) { option in
+                        Text(option.rawValue)
                             .tag(option)
                     }
                 }
                 .pickerStyle(.menu)
                 .onChange(of: selectedOption) {
-                    filterOption = selectedOption
+                    if initialValue == false {
+                        filterOption = .none
+                    }
+                    initialValue = false
                 }
             }
 
@@ -53,7 +67,26 @@ struct FilterSelectionView: View {
             }
         }
         .onAppear {
-            selectedOption = filterOption
+            selectedOption = convert(from: filterOption)
+        }
+    }
+
+    private func convert(from filterOption: FilterOption) -> MovieFilterSelection {
+        switch filterOption {
+            case .none:
+                return .none
+            case .language:
+                return .language
+            case .year:
+                return .year
+            case .genre:
+                return .genre
+            case .rating:
+                return .rating
+            case .status:
+                return .status
+            case .director:
+                return .director
         }
     }
 }

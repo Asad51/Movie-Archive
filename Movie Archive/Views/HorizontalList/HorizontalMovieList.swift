@@ -65,7 +65,7 @@ struct HorizontalMovieList: View {
     SwiftDataPreview(previewContainer: PreviewContainer([Movie.self]), items: Movie.previewMovies) {
         NavigationStack {
             List {
-                HorizontalMovieList(sortBy: .year, filterOption: .status(status: Status.neverWatched.rawValue))
+                HorizontalMovieList(sortBy: .year, filterOption: .status(status: Status.unknown.rawValue))
             }
             .listStyle(.grouped)
         }

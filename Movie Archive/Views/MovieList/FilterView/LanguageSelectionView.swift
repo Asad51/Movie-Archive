@@ -9,10 +9,12 @@ import SwiftUI
 
 struct LanguageSelectionView: View {
     @Binding var filterOption: FilterOption
-    @State private var selectedLanguage: String = Language.english.rawValue
+    @State private var selectedLanguage: String = ""
 
     var body: some View {
         Picker("Language", selection: $selectedLanguage) {
+            Text("Select Language")
+            
             ForEach(Language.allCases, id: \.rawValue) { language in
                 Text(language.rawValue)
                     .tag(language)
@@ -22,7 +24,9 @@ struct LanguageSelectionView: View {
             filterOption = .language(language: selectedLanguage)
         }
         .onAppear {
-            filterOption = .language(language: selectedLanguage)
+            if case let .language(language) = filterOption {
+                selectedLanguage = language
+            }
         }
     }
 }

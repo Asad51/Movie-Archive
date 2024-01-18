@@ -38,8 +38,9 @@ struct HorizontalMovieRow: View {
 
 private extension Image {
     func posterModifier(imdbRating: Double, status: Int) -> some View {
-        let state = Status(rawValue: status) ?? .neverWatched
-        let showCircle = state != .neverWatched
+        let state = Status(rawValue: status) ?? .unknown
+        let showCircle = state == .watched
+        
         return self
             .resizable()
             .scaledToFill()
@@ -49,10 +50,10 @@ private extension Image {
                 if showCircle {
                     ZStack(alignment: .center) {
                         Circle()
-                            .fill(state == .watched ? .green : .purple)
+                            .fill(.green)
 
-                        Image(systemName: state == .watched ? "checkmark" : "play.fill")
-                            .foregroundStyle(state == .watched ? .black : .white)
+                        Image(systemName: "checkmark")
+                            .foregroundStyle(.black)
                             .bold()
                     }
                     .frame(width: 30)

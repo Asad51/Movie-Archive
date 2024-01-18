@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StatusSelectionView: View {
     @Binding var filterOption: FilterOption
-    @State private var status: Status = .neverWatched
+    @State private var status: Status = .unknown
 
     var body: some View {
         Picker("", selection: $status) {
@@ -22,13 +22,9 @@ struct StatusSelectionView: View {
             filterOption = .status(status: status.rawValue)
         }
         .onAppear {
-            switch filterOption {
-                case let .status(statusValue):
-                    status = Status(rawValue: statusValue) ?? .neverWatched
-                default:
-                    break
+            if case let .status(status) = filterOption {
+                self.status = Status(rawValue: status) ?? .unknown
             }
-            filterOption = .status(status: status.rawValue)
         }
     }
 }

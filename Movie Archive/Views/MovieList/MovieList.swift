@@ -50,7 +50,7 @@ struct MovieList: View {
                 }
             case let .status(status):
                 predicate = #Predicate {
-                    $0.status == status && (
+                    (status == -1 || $0.status == status) && (
                         searchText.isEmpty ||
                             $0.title.localizedStandardContains(searchText))
                 }
