@@ -1,7 +1,7 @@
 ## Movie Archive
 **`Movie Archive`** is an iOS application designed to be your one-stop shop for managing your personal movie collection. Keep track of the films you own, discover new favorites, and organize your cinematic library with ease.
 
-<img src="./Screenshots/01.png" height="400px" style="border: 2px solid #555;"> <img src="./Screenshots/02.png" height="400px" style="border: 2px solid #555;"> <img src="./Screenshots/03.png" height="400px" style="border: 2px solid #555;"> <img src="./Screenshots/04.png" height="400px" style="border: 2px solid #555;"> <img src="./Screenshots/04.png" height="400px" style="border: 2px solid #555;"> <img src="./Screenshots/06.png" height="400px" style="border: 2px solid #555;">
+<img src="./Screenshots/01.png" height="400px" style="border: 2px solid #555;"> <img src="./Screenshots/02.png" height="400px" style="border: 2px solid #555;"> <img src="./Screenshots/03.png" height="400px" style="border: 2px solid #555;"> <img src="./Screenshots/04.png" height="400px" style="border: 2px solid #555;"> <img src="./Screenshots/05.png" height="400px" style="border: 2px solid #555;"> <img src="./Screenshots/06.png" height="400px" style="border: 2px solid #555;">
 
 ### Getting Started
 
